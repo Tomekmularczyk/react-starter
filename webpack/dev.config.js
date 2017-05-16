@@ -5,7 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   context: path.resolve(__dirname, '..'),
 
-  entry: ['babel-polyfill', './src'],
+  entry: [
+    'react-hot-loader/patch',
+    'webpack/hot/only-dev-server',
+    './src',
+  ],
 
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -15,6 +19,12 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.jsx?$/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        use: 'eslint-loader'
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -46,7 +56,10 @@ module.exports = {
     compress: true,
     hot: true,
     historyApiFallback: true,
-    overlay: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    }
   },
 
   plugins: [

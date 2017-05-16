@@ -1,6 +1,6 @@
+import path from 'path';
 import Express from 'express';
 import React from 'react';
-import path from 'path';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router'
 import routes from '../src/routes';

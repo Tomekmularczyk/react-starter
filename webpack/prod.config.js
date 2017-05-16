@@ -5,7 +5,7 @@ const devConfig = require('./dev.config');
 
 module.exports = {
   context: devConfig.context,
-  entry: devConfig.entry,
+  entry: './src',
   output: devConfig.output,
   module: devConfig.module,
   resolve: devConfig.resolve,
