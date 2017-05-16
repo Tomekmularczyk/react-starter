@@ -1,0 +1,6 @@
+node_modules/
+dist/
+npm-debug.log
+server.bundle.js
+.idea/
+.DS_Store
