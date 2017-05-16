@@ -7,6 +7,11 @@ import routes from '../src/routes';
 
 const app = Express();
 
+//template engine
+app.set('view engine', 'ejs');
+//where to look for templates
+app.set('views', path.join(__dirname, '/dist'));
+
 //Serve static files
 app.use(Express.static(path.join(__dirname, 'dist'), {index: false}));
 
@@ -26,24 +31,7 @@ app.get('*', (req, res) => {
     });
     res.end()
   } else {
-    res.write(`
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>iMeshup rend</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        </head>
-        <body>
-            <div id="app">
-              ${html}
-            </div>
-            <script src="/bundle.js"></script>
-        </body>
-        </html>
-      `);
-    res.end()
+    res.render('index', { html });
   }
 });
 

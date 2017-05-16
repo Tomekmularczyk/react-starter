@@ -51,7 +51,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './webpack/index.html',
+      template: './webpack/index.ejs',
       filename: 'index.html',
       inject: 'body',
       hash: true

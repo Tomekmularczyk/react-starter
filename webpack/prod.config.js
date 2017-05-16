@@ -15,10 +15,11 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './webpack/index.html',
-      filename: 'index.html',
+      template: './webpack/index.ejs',
+      filename: 'index.ejs',
       inject: 'body',
-      hash: true
+      hash: true,
+      production: true
     }),
     new webpack.DefinePlugin({
       'process.env': {
