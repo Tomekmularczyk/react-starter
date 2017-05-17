@@ -1,4 +1,5 @@
 const fs = require('fs');
+const webpack = require('webpack');
 const prodConfig = require('./prod.config');
 
 module.exports = {
@@ -24,4 +25,16 @@ module.exports = {
 
   module: prodConfig.module,
   resolve: prodConfig.resolve,
+
+  devtool: 'source-map',
+
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+        HOST: JSON.stringify('http://localhost:8080/')
+      }
+    }),
+    new webpack.NamedModulesPlugin()
+  ]
 };

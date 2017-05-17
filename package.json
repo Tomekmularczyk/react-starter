@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server --config webpack/dev.config.js --progress",
     "build:prod": "webpack --config webpack/prod.config.js --progress",
     "build:server": "webpack --config webpack/server.config.js --progress",
+    "debug-ssr": "node --inspect server.bundle.js", //- chrome node debugging
     "production": "npm run build:prod && npm run build:server && node server.bundle.js"
   },
   "dependencies": {
