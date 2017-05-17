@@ -4,7 +4,9 @@ iMeshup project
 
 ### Quick summary: ###
 
-Project is already configured for development and production use (server-sider rendering)
+Project is already configured for development and production use (server-sider rendering).
+Server-Side configuration doesn't minify code and also produces source-maps so it is possible to debug server-side
+rendering with Chrome-Node Dev-Tools.
 
 
 ### Technology stack: ###
