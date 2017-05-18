@@ -44,7 +44,8 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.4.1",
     "flow-bin": "^0.46.0",
-    "html-webpack-plugin": "^2.28.0"
+    "html-webpack-plugin": "^2.28.0",
+    "url-loader": "^0.5.8"
   },
   "babel": {
     "presets": [
