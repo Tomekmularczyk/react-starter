@@ -1,6 +1,7 @@
 import path from 'path';
 import Express from 'express';
 import React from 'react';
+import { flushToHTML } from 'styled-jsx/server'
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router'
 import routes from '../src/routes';
@@ -25,13 +26,15 @@ app.get('*', (req, res) => {
     </StaticRouter>
   );
 
+  const styles = flushToHTML();
+
   if (context.url) {
     res.writeHead(301, {
       Location: context.url
     });
     res.end()
   } else {
-    res.render('index', { html });
+    res.render('index', { html, styles });
   }
 });
 
