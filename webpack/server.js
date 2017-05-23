@@ -1,7 +1,7 @@
 import path from 'path';
 import Express from 'express';
 import React from 'react';
-import { flushToHTML } from 'styled-jsx/server'
+import { flushToHTML } from 'styled-jsx-postcss/server'
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router'
 import routes from '../src/routes';

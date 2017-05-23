@@ -21,7 +21,7 @@ Run the project:
 * Webpack | WebpackDevServer | HotModuleReplacements
 * HtmlWebpackPlugin for automated generating of HTML and hashing resources
 * Express and EJS templates for server-side rendering
-* styled-jsx for styling components
+* styled-jsx together with postcss and cssnext plugin
 * babel
     * babel-runtime and babel-plugin-transform-runtime (instead of polyfill)
     * preset env | stage-0
