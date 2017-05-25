@@ -20,8 +20,8 @@ Run the project:
 * React-Router v4 (if there happens to be a problem, possible downgrade)
 * Webpack | WebpackDevServer | HotModuleReplacements
 * HtmlWebpackPlugin for automated generating of HTML and hashing resources
-* Express and EJS templates for server-side rendering
-* styled-jsx together with postcss and cssnext plugin
+* Express and EJS templates for server-side rendering 
+* styled-jsx-postcss together with 'precss' plugin and 'autoprefixer'
 * babel
     * babel-runtime and babel-plugin-transform-runtime (instead of polyfill)
     * preset env | stage-0
