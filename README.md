@@ -18,6 +18,7 @@ Run the project:
 * Yarn for managing dependencies
 * React
 * React-Router v4 (if there happens to be a problem, possible downgrade)
+* Redux with redux-logger
 * Webpack | WebpackDevServer | HotModuleReplacements
 * HtmlWebpackPlugin for automated generating of HTML and hashing resources
 * Express and EJS templates for server-side rendering 

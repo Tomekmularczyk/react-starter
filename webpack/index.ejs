@@ -10,9 +10,12 @@
     <% } %>
 </head>
 <body>
-    <%if (htmlWebpackPlugin.options.production) { %>
+    <% if (htmlWebpackPlugin.options.production) { %>
         <div id="app"><%= '\<\%\- html \%\>' %></div>
-    <% } else {%>
+        <script>
+            <%= "window.__PRELOADED_STATE__ = " + '\<\%\- preloadedState \%\>' %>
+        </script>
+    <% } else { %>
         <div id="app"></div>
     <% } %>
 </body>
