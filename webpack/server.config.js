@@ -6,13 +6,13 @@ module.exports = {
   entry: './webpack/server.js',
 
   output: {
-    filename: 'server.bundle.js'
+    filename: 'server.bundle.js',
   },
 
   target: 'node',
 
   externals: fs.readdirSync('./node_modules').concat([
-    'react-dom/server'
+    'react-dom/server',
   ]).reduce((ext, mod) => {
     ext[mod] = 'commonjs ' + mod;
     return ext
@@ -20,7 +20,7 @@ module.exports = {
 
   node: {
     __filename: false,
-    __dirname: false
+    __dirname: false,
   },
 
   module: prodConfig.module,
@@ -32,9 +32,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        HOST: JSON.stringify('http://localhost:8080/')
-      }
+        HOST: JSON.stringify('http://localhost:8080/'),
+      },
     }),
-    new webpack.NamedModulesPlugin()
-  ]
+    new webpack.NamedModulesPlugin(),
+  ],
 };

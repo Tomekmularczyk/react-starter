@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/dist'));
 
 //Serve static files
-app.use(Express.static(path.join(__dirname, 'dist'), {index: false}));
+app.use(Express.static(path.join(__dirname, 'dist'), { index: false }));
 
 // This is fired every time the server side receives a request
 app.get('*', (req, res) => {
@@ -30,7 +30,7 @@ app.get('*', (req, res) => {
 
   if (context.url) {
     res.writeHead(301, {
-      Location: context.url
+      Location: context.url,
     });
     res.end()
   } else {

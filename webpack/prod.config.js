@@ -19,17 +19,17 @@ module.exports = {
       filename: 'index.ejs',
       inject: 'body',
       hash: true,
-      production: true
+      production: true,
     }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        HOST: JSON.stringify('http://dev.imeshup.com/')
+        HOST: JSON.stringify('http://dev.imeshup.com/'),
       },
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.LoaderOptionsPlugin({
-      minimize: true
+      minimize: true,
     }),
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
@@ -37,11 +37,11 @@ module.exports = {
       compress: {
         warnings: false,
         screw_ie8: true,
-        drop_console: true
-      }
+        drop_console: true,
+      },
     }),
     new CopyWebpackPlugin([
-      { from: './static', to: './static' }
-    ])
-  ]
+      { from: './static', to: './static' },
+    ]),
+  ],
 };

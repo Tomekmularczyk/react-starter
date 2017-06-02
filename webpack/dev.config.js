@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
 
   module: {
@@ -23,7 +23,7 @@ module.exports = {
         test: /\.jsx?$/,
         enforce: 'pre',
         exclude: /node_modules/,
-        use: 'eslint-loader'
+        use: 'eslint-loader',
       },
       {
         test: /\.jsx?$/,
@@ -31,14 +31,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            cacheDirectory: true
-          }
+            cacheDirectory: true,
+          },
         },
       },
       {
-        test: /\.(ttf|eot|woff|woff2|svg)$/,
-        use: "url-loader?limit=10000&name=fonts/[name].[ext]"
-      }
+        test: /\.(ttf|eot|woff|woff2|png|svg)$/,
+        use: "url-loader?limit=10000&name=fonts/[name].[ext]",
+      },
     ],
   },
 
@@ -47,9 +47,14 @@ module.exports = {
   resolve: {
     modules: [
       path.join(__dirname, 'src'),
-      'node_modules'
+      'node_modules',
     ],
-    extensions: ['.js', '.jsx']
+    alias: {
+      common: path.resolve(__dirname, '../src/App/_common'),
+      static: path.resolve(__dirname, '../static'),
+      data: path.resolve(__dirname, '../src/data'),
+    },
+    extensions: ['.js', '.jsx'],
   },
 
   devServer: {
@@ -58,8 +63,8 @@ module.exports = {
     historyApiFallback: true,
     overlay: {
       warnings: false,
-      errors: true
-    }
+      errors: true,
+    },
   },
 
   plugins: [
@@ -67,14 +72,14 @@ module.exports = {
       template: './webpack/index.ejs',
       filename: 'index.html',
       inject: 'body',
-      hash: true
+      hash: true,
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        HOST: JSON.stringify('http://localhost:8080/')
-      }
+        HOST: JSON.stringify('http://localhost:8080/'),
+      },
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-  ]
+  ],
 };

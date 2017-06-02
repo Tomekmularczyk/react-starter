@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from 'data/theme';
 
 const Page404 = ({ location }) => (
   <div class="Page404">
@@ -8,7 +9,7 @@ const Page404 = ({ location }) => (
         display: flex;
 
         h3 {
-          background-color: red;
+          background-color: ${colors.themeGreen};
         }
       }
     `}</style>

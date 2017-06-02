@@ -52,12 +52,7 @@
   },
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "modules": false
-        }
-      ],
+      [ "env", { "modules": false } ],
       "react",
       "stage-0",
       "flow"
@@ -75,7 +70,9 @@
     "extends": "react-app",
     "rules": {
       "import/order": "warn",
-      "no-duplicate-imports": "warn"
+      "no-duplicate-imports": "warn",
+      "object-curly-spacing": ["warn", "always"],
+      "comma-dangle": ["warn", "always-multiline"]
     }
   },
   "postcss": {
