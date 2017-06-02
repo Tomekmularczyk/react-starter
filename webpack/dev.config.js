@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|woff|woff2|png|svg)$/,
-        use: "url-loader?limit=10000&name=fonts/[name].[ext]",
+        use: "url-loader?limit=10000&name=static/[name].[ext]",
       },
     ],
   },
