@@ -1,15 +1,26 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const devConfig = require('./dev.config');
+const common = require('./common.config');
 
 module.exports = {
-  context: devConfig.context,
+  context: common.context,
+
   entry: './src',
-  output: devConfig.output,
-  module: devConfig.module,
-  resolve: devConfig.resolve,
-  devServer: devConfig.devServer,
+
+  output: common.output,
+
+  module: {
+    rules: [
+      ...common.module.rules,
+      {
+        test: /\.(ttf|eot|woff|woff2|png|svg)$/,
+        use: "url-loader?limit=10000&name=static/[name].[ext]",
+      },
+    ],
+  },
+
+  resolve: common.resolve,
 
   devtool: 'source-map',
 

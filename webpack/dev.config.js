@@ -1,9 +1,9 @@
-const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const common = require('./common.config');
 
 module.exports = {
-  context: path.resolve(__dirname, '..'),
+  context: common.context,
 
   entry: [
     'react-hot-loader/patch',
@@ -11,30 +11,11 @@ module.exports = {
     './src',
   ],
 
-  output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: 'bundle.js',
-    publicPath: '/',
-  },
+  output: common.output,
 
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        enforce: 'pre',
-        exclude: /node_modules/,
-        use: 'eslint-loader',
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-          },
-        },
-      },
+      ...common.module.rules,
       {
         test: /\.(ttf|eot|woff|woff2|png|svg)$/,
         use: "url-loader?limit=10000&name=static/[name].[ext]",
@@ -42,20 +23,9 @@ module.exports = {
     ],
   },
 
-  devtool: 'inline-source-map',
+  resolve: common.resolve,
 
-  resolve: {
-    modules: [
-      path.join(__dirname, 'src'),
-      'node_modules',
-    ],
-    alias: {
-      common: path.resolve(__dirname, '../src/App/_common'),
-      static: path.resolve(__dirname, '../static'),
-      data: path.resolve(__dirname, '../src/data'),
-    },
-    extensions: ['.js', '.jsx'],
-  },
+  devtool: 'inline-source-map',
 
   devServer: {
     compress: true,

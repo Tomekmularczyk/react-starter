@@ -13,9 +13,9 @@ const app = Express();
 //template engine
 app.set('view engine', 'ejs');
 //where to look for templates
-app.set('views', path.join(__dirname, '/dist'));
+app.set('views', path.join(__dirname, '/public'));
 //Serve static files
-app.use(Express.static(path.join(__dirname, 'dist'), { index: false }));
+app.use(Express.static(path.join(__dirname, '/public'), { index: false }));
 
 // This is fired every time the server side receives a request
 app.get('*', (req, res) => {

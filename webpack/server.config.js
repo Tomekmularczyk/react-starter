@@ -1,12 +1,16 @@
 const fs = require('fs');
+const path = require('path');
 const webpack = require('webpack');
-const prodConfig = require('./prod.config');
+const common = require('./common.config');
 
 module.exports = {
+  context: common.context,
+
   entry: './webpack/server.js',
 
   output: {
     filename: 'server.bundle.js',
+    path: path.resolve(__dirname, '../dist'),
   },
 
   target: 'node',
@@ -23,10 +27,19 @@ module.exports = {
     __dirname: false,
   },
 
-  module: prodConfig.module,
-  resolve: prodConfig.resolve,
+  module: {
+    rules: [
+      ...common.module.rules,
+      {
+        test: /\.(ttf|eot|woff|woff2|png|svg)$/,
+        use: "url-loader?limit=10000&name=public/static/[name].[ext]",
+      },
+    ],
+  },
 
-  devtool: 'source-map',
+  resolve: common.resolve,
+
+  // devtool: 'source-map', //uncomment to generate source maps for production
 
   plugins: [
     new webpack.DefinePlugin({

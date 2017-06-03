@@ -5,14 +5,14 @@ starter project project
 ### Quick summary: ###
 
 Project is already configured for development and production use (server-sider rendering).
-Server-Side configuration doesn't minify code and also produces source-maps so it is possible to debug server-side
-rendering with Chrome-Node Dev-Tools.
+It is possible to debug server-side rendering and production build by uncommenting `devtool` in
+webpack configuration (Chrome-Node Dev-Tools).
 
 Run the project:
-1. npm install / yarn - install dependencies
-2. npm run dev - start in development mode
-3. npm run production - build project and run it on node server,
-4. npm run debug-ssr - run (builded) project with chrome-dev-tools debugging option
+1. `npm install` / `yarn` - install dependencies
+2. `npm run dev` - start in development mode
+3. `npm run production` - build project to /dist directory and run it on node server,
+4. `npm run debug-ssr` - run (builded) project with chrome-dev-tools debugging option
 
 ### Technology stack: ###
 * Yarn for managing dependencies
