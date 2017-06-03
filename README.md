@@ -26,7 +26,7 @@ Run the project:
 * babel
     * babel-runtime and babel-plugin-transform-runtime (instead of polyfill)
     * preset env | stage-0
-    * class and for attributes in jsx
+    * 'class' and 'for' attributes in jsx
     * should support latest EcmaScript features
 * eslint - create-react-app config extension
 * flow integration
