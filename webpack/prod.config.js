@@ -22,7 +22,7 @@ module.exports = {
 
   resolve: common.resolve,
 
-  devtool: 'source-map',
+  //devtool: 'source-map', //uncomment to generate source maps for production
 
   plugins: [
     new HtmlWebpackPlugin({
@@ -39,9 +39,6 @@ module.exports = {
       },
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-    }),
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
       sourceMap: true,

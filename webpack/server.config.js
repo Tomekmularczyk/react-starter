@@ -39,7 +39,7 @@ module.exports = {
 
   resolve: common.resolve,
 
-  // devtool: 'source-map', //uncomment to generate source maps for production
+  devtool: 'source-map',
 
   plugins: [
     new webpack.DefinePlugin({

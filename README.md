@@ -4,9 +4,9 @@ starter project project
 
 ### Quick summary: ###
 
-Project is already configured for development and production use (server-sider rendering).
-It is possible to debug server-side rendering and production build by uncommenting `devtool` in
-webpack configuration (Chrome-Node Dev-Tools).
+* Project is already configured for development and production use (server-sider rendering).
+* Code used for server side-rendering is not minified so its possible to debug ssr with Chrome-Node Dev-Tools.
+* Client bundle is minified but can generate source-maps by uncommenting `devtool` in production config.
 
 Run the project:
 1. `npm install` / `yarn` - install dependencies
