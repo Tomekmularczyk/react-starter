@@ -5,6 +5,5 @@
 [libs]
 
 [options]
-esproposal.decorators=ignore
 module.name_mapper='^data\/\(.*\)$' -> '<PROJECT_ROOT>/src/data/\1'
 module.name_mapper='^static\/\(.*\)$' -> '<PROJECT_ROOT>/static/\1'

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { colors } from 'data/theme';
 
 const Page404 = ({ location }) => (
@@ -15,5 +16,9 @@ const Page404 = ({ location }) => (
     `}</style>
   </div>
 );
+
+Page404.propTypes = {
+  location: PropTypes.object,
+};
 
 export default Page404;
