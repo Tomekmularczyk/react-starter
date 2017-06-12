@@ -52,7 +52,7 @@
     "flow-bin": "^0.46.0",
     "html-webpack-plugin": "^2.28.0",
     "precss": "^1.4.0",
-    "url-loader": "^0.5.8"
+    "url-loader": "^0.5.9"
   },
   "babel": {
     "presets": [
@@ -69,40 +69,11 @@
     "plugins": [
       "react-html-attrs",
       "transform-runtime",
-      "transform-class-properties",
       "transform-decorators-legacy",
+      "transform-class-properties",
       "styled-jsx-postcss/babel",
       "react-hot-loader/babel"
     ]
-  },
-  "eslintConfig": {
-    "extends": "react-app",
-    "rules": {
-      "import/order": "warn",
-      "react/jsx-no-target-blank": "error",
-      "no-duplicate-imports": "warn",
-      "object-curly-spacing": [
-        "warn",
-        "always"
-      ],
-      "comma-dangle": [
-        "warn",
-        "always-multiline"
-      ],
-      "jsx-quotes": [
-        "warn",
-        "prefer-double"
-      ],
-      "react/prop-types": [
-        "warn",
-        {
-          "ignore": [
-            "className",
-            "children"
-          ]
-        }
-      ]
-    }
   },
   "postcss": {
     "plugins": {
