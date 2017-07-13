@@ -1,13 +1,19 @@
 {
-  "extends": "react-app",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "rules": {
-    "no-duplicate-imports": "warn",
-    "object-curly-spacing": ["warn", "always"],
-    "comma-dangle": ["warn", "always-multiline"],
-    "jsx-quotes": ["warn", "prefer-double"],
-    "import/order": "warn",
-    "react/jsx-no-target-blank": "error",
-    "react/sort-comp": "warn",
-    "react/prop-types": ["warn", { "ignore": ["className", "children"] }]
+    "react/prop-types": ["warn", { "ignore": ["className", "children"] }],
+    "react/no-unknown-property": ["error", { "ignore": ["class", "for"] }],
+    "no-underscore-dangle": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack/common.config.js"
+      }
+    }
   }
 }

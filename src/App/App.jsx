@@ -4,7 +4,7 @@ import welcome from 'static/welcome.png';
 
 const App = () => (
   <div class="App">
-    <img src={welcome} alt="welcome"/>
+    <img src={welcome} alt="welcome" />
     <Link to="/notknown">Go to 404 page</Link>
     <style jsx>{`
       .App {

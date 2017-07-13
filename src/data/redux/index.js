@@ -3,40 +3,39 @@ import { createLogger } from 'redux-logger';
 import reducers from './reducers';
 
 /**
+ * if production environment we want to preload redux state (on client) to state provided by server.
+ */
+function createState(middleware) {
+  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
+    const preloadedState = window.__PRELOADED_STATE__;
+
+    //  Allow the passed state to be garbage-collected
+    delete window.__PRELOADED_STATE__;
+
+    return createStore(reducers, preloadedState, applyMiddleware(...middleware));
+  }
+  return createStore(reducers, applyMiddleware(...middleware));
+}
+
+/**
  * creates store. Pass 'true' for logging redux.
  */
 function configureStore(logActions) {
   const middleware = [];
   const logger = createLogger({ collapsed: true, diff: true });
-  logActions && middleware.push(logger);
+  if (logActions) middleware.push(logger);
 
-  const store = createState(reducers, middleware);
+  const store = createState(middleware);
 
-  //-- Enable Webpack hot module replacement for reducers
+  //  Enable Webpack hot module replacement for reducers
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers');
+      const nextRootReducer = require('./reducers'); // eslint-disable-line
       store.replaceReducer(nextRootReducer);
     });
   }
 
   return store;
-}
-
-/**
- * if production environment we want to preload redux state (on client) to state provided by server.
- */
-function createState(reducers, middleware) {
-  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
-    const preloadedState = window.__PRELOADED_STATE__;
-
-    // Allow the passed state to be garbage-collected
-    delete window.__PRELOADED_STATE__;
-
-    return createStore(reducers, preloadedState, applyMiddleware(...middleware));
-  } else {
-    return createStore(reducers, applyMiddleware(...middleware));
-  }
 }
 
 const store = configureStore(true);

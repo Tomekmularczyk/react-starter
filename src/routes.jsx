@@ -5,7 +5,7 @@ import App from './App/App';
 
 export default (
   <Switch>
-    <Route exact path="/" component={App}/>
-    <Route component={Page404}/>
+    <Route exact path="/" component={App} />
+    <Route component={Page404} />
   </Switch>
 );
