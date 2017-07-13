@@ -29,4 +29,3 @@ Run the project:
     * 'class' and 'for' attributes in jsx
     * should support latest EcmaScript features
 * eslint - create-react-app config extension
-* flow integration
