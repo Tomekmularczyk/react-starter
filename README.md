@@ -28,4 +28,4 @@ Run the project:
     * preset env | stage-0
     * 'class' and 'for' attributes in jsx
     * should support latest EcmaScript features
-* eslint - create-react-app config extension
+* eslint - airbnb extension
