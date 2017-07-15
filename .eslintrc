@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
   "env": {
     "browser": true,
     "node": true
@@ -12,6 +12,9 @@
   "settings": {
     "import/resolver": {
       "webpack": { "config": "webpack/common.config.js" }
+    },
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
     }
   }
 }
