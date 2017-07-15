@@ -1,11 +1,10 @@
 {
-  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "extends": ["airbnb"],
   "env": {
     "browser": true,
     "node": true
   },
   "rules": {
-    "react/prop-types": ["warn", { "ignore": ["className", "children"] }],
     "react/no-unknown-property": ["error", { "ignore": ["class", "for"] }],
     "no-underscore-dangle": "off"
   },
