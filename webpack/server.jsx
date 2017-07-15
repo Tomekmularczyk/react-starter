@@ -3,21 +3,20 @@ import Express from 'express';
 import React from 'react';
 import { flushToHTML } from 'styled-jsx-postcss/server';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router'
+import { StaticRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import store from 'data/redux';
 import routes from '../src/routes';
 
 const app = Express();
 
-//template engine
+// template engine
 app.set('view engine', 'ejs');
-//where to look for templates
+// where to look for templates
 app.set('views', path.join(__dirname, '/public'));
-//Serve static files
+// Serve static files
 app.use(Express.static(path.join(__dirname, '/public'), { index: false }));
 
-// This is fired every time the server side receives a request
 app.get('*', (req, res) => {
   const context = {};
 
@@ -26,7 +25,7 @@ app.get('*', (req, res) => {
       <StaticRouter location={req.url} context={context}>
         {routes}
       </StaticRouter>
-    </Provider>
+    </Provider>,
   );
 
   const styles = flushToHTML();
@@ -36,7 +35,7 @@ app.get('*', (req, res) => {
     res.writeHead(301, {
       Location: context.url,
     });
-    res.end()
+    res.end();
   } else {
     res.render('index', { html, styles, preloadedState });
   }
@@ -44,5 +43,5 @@ app.get('*', (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log('Production Express server running at localhost:' + PORT)
+  console.log(`Production Express server running at localhost:${PORT}`); // eslint-disable-line no-console
 });

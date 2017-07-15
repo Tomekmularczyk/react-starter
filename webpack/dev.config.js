@@ -18,7 +18,7 @@ module.exports = {
       ...common.module.rules,
       {
         test: /\.(ttf|eot|woff|woff2|png|svg)$/,
-        use: "url-loader?limit=10000&name=static/[name].[ext]",
+        use: 'url-loader?limit=10000&name=static/[name].[ext]',
       },
     ],
   },

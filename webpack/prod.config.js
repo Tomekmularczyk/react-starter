@@ -15,14 +15,14 @@ module.exports = {
       ...common.module.rules,
       {
         test: /\.(ttf|eot|woff|woff2|png|svg)$/,
-        use: "url-loader?limit=10000&name=static/[name].[ext]",
+        use: 'url-loader?limit=10000&name=static/[name].[ext]',
       },
     ],
   },
 
   resolve: common.resolve,
 
-  //devtool: 'source-map', //uncomment to generate source maps for production
+  // devtool: 'source-map', //uncomment to generate source maps for production
 
   plugins: [
     new HtmlWebpackPlugin({

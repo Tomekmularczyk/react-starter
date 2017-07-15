@@ -6,7 +6,7 @@ const common = require('./common.config');
 module.exports = {
   context: common.context,
 
-  entry: './webpack/server.js',
+  entry: './webpack/server.jsx',
 
   output: {
     filename: 'server.bundle.js',
@@ -18,8 +18,8 @@ module.exports = {
   externals: fs.readdirSync('./node_modules').concat([
     'react-dom/server',
   ]).reduce((ext, mod) => {
-    ext[mod] = 'commonjs ' + mod;
-    return ext
+    ext[mod] = `commonjs ${mod}`;
+    return ext;
   }, {}),
 
   node: {
@@ -32,7 +32,7 @@ module.exports = {
       ...common.module.rules,
       {
         test: /\.(ttf|eot|woff|woff2|png|svg)$/,
-        use: "url-loader?limit=10000&name=public/static/[name].[ext]",
+        use: 'url-loader?limit=10000&name=public/static/[name].[ext]',
       },
     ],
   },
