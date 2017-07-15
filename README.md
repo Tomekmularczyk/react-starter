@@ -9,15 +9,15 @@ starter project project
 * Client bundle is minified but can generate source-maps by uncommenting `devtool` in production config.
 
 Run the project:
-1. `npm install` / `yarn` - install dependencies
-2. `npm run dev` - start in development mode
-3. `npm run production` - build project to /dist directory and run it on node server,
-4. `npm run debug-ssr` - run (builded) project with chrome-dev-tools debugging option
+1. `yarn` - install dependencies
+2. `yarn dev` - start in development mode
+3. `yarn production` - build project to /dist directory and run it on node server,
+4. `yarn debug-ssr` - run (builded) project with chrome-dev-tools debugging option
 
 ### Technology stack: ###
 * Yarn for managing dependencies
 * React
-* React-Router v4 (if there happens to be a problem, possible downgrade)
+* React-Router v4
 * Redux with redux-logger
 * Webpack | WebpackDevServer | HotModuleReplacements
 * HtmlWebpackPlugin for automated generating of HTML and hashing resources
