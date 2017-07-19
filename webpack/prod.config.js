@@ -51,5 +51,6 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: './static', to: './static' },
     ]),
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ],
 };
