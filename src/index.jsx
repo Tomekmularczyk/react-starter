@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import store from 'data/redux';
-import routes from './routes';
+import routes from './app/index';
 
 function render() {
   ReactDOM.render(

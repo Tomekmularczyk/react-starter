@@ -6,24 +6,24 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import store from 'data/redux';
-import routes from '../src/routes';
+import app from '../src/app/index';
 
-const app = Express();
+const server = Express();
 
 // template engine
-app.set('view engine', 'ejs');
+server.set('view engine', 'ejs');
 // where to look for templates
-app.set('views', path.join(__dirname, '/public'));
+server.set('views', path.join(__dirname, '/public'));
 // Serve static files
-app.use(Express.static(path.join(__dirname, '/public'), { index: false }));
+server.use(Express.static(path.join(__dirname, '/public'), { index: false }));
 
-app.get('*', (req, res) => {
+server.get('*', (req, res) => {
   const context = {};
 
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
-        {routes}
+        {app}
       </StaticRouter>
     </Provider>,
   );
@@ -42,6 +42,6 @@ app.get('*', (req, res) => {
 });
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Production Express server running at localhost:${PORT}`); // eslint-disable-line no-console
 });
