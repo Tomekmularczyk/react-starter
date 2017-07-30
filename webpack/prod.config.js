@@ -6,7 +6,7 @@ const common = require('./common.config');
 module.exports = {
   context: common.context,
 
-  entry: './src',
+  entry: './src/client.jsx',
 
   output: common.output,
 

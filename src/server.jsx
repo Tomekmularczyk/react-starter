@@ -5,7 +5,7 @@ import { flushToHTML } from 'styled-jsx-postcss/server';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { Provider } from 'react-redux';
-import store from 'data/redux';
+import store from 'data/redux/index';
 import app from '../src/app/index';
 
 const server = Express();

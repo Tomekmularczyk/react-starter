@@ -6,7 +6,7 @@ const common = require('./common.config');
 module.exports = {
   context: common.context,
 
-  entry: './webpack/server.jsx',
+  entry: './src/server.jsx',
 
   output: {
     filename: 'server.bundle.js',

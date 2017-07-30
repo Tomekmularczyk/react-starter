@@ -8,7 +8,7 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack/hot/only-dev-server',
-    './src',
+    './src/client.jsx',
   ],
 
   output: common.output,
