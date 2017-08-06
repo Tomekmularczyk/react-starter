@@ -42,9 +42,9 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
       sourceMap: true,
+      parallel: true,
       compress: {
         warnings: false,
-        screw_ie8: true,
         drop_console: true,
       },
     }),
