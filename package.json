@@ -2,7 +2,7 @@
   "name": "newproject",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "webpack-dev-server --config webpack/dev.config.js --progress",
     "build:prod": "webpack --config webpack/prod.config.js --progress",
