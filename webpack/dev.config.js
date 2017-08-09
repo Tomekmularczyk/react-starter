@@ -25,7 +25,7 @@ module.exports = {
 
   resolve: common.resolve,
 
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   devServer: {
     compress: true,
