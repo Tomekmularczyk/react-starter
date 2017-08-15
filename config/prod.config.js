@@ -26,11 +26,14 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './webpack/index.ejs',
+      template: './config/index.ejs',
       filename: 'index.ejs',
       inject: 'body',
       hash: true,
       production: true,
+      minify: {
+        removeComments: true,
+      },
     }),
     new webpack.DefinePlugin({
       'process.env': {

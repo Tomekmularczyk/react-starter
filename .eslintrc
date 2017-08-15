@@ -10,7 +10,7 @@
   },
   "settings": {
     "import/resolver": {
-      "webpack": { "config": "webpack/common.config.js" }
+      "webpack": { "config": "./config/common.config.js" }
     },
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true

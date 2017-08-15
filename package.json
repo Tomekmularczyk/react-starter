@@ -4,9 +4,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config webpack/dev.config.js --progress",
-    "build:prod": "webpack --config webpack/prod.config.js --progress",
-    "build:server": "webpack --config webpack/server.config.js --progress",
+    "dev": "webpack-dev-server --config config/dev.config.js --progress",
+    "build:prod": "webpack --config config/prod.config.js --progress",
+    "build:server": "webpack --config config/server.config.js --progress",
     "debug-ssr": "node --inspect dist/server.bundle.js",
     "production": "npm run build:prod && npm run build:server && node dist/server.bundle.js"
   },
