@@ -41,7 +41,7 @@ server.get('*', (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Production Express server running at localhost:${PORT}`); // eslint-disable-line no-console
+  console.log(`Production Express server running at localhost:${PORT}`);
 });

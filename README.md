@@ -1,6 +1,8 @@
 # README #
 
-starter project project
+1. Clone the repo.
+2. Initialize new git repo (`rm -rf .git` and `git init`)
+3. Change *name* in package.json file.
 
 ### Quick summary: ###
 

@@ -6,10 +6,12 @@ const common = require('./common.config');
 module.exports = {
   context: common.context,
 
-  entry: './src/server.jsx',
+  entry: {
+    server: './src/server.jsx',
+  },
 
   output: {
-    filename: 'server.bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, '../dist'),
   },
 

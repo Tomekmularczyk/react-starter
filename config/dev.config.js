@@ -5,11 +5,13 @@ const common = require('./common.config');
 module.exports = {
   context: common.context,
 
-  entry: [
-    'react-hot-loader/patch',
-    'webpack/hot/only-dev-server',
-    './src/client.jsx',
-  ],
+  entry: {
+    client: [
+      'react-hot-loader/patch',
+      'webpack/hot/only-dev-server',
+      './src/client.jsx',
+    ],
+  },
 
   output: common.output,
 
