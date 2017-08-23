@@ -5,7 +5,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, '../dist/public/'),
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].bundle.js',
     chunkFilename: '[name].bundle.js',
     publicPath: '/',
   },

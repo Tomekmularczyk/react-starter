@@ -31,7 +31,6 @@ module.exports = {
       template: './config/index.ejs',
       filename: 'index.ejs',
       inject: 'body',
-      hash: true,
       production: true,
       minify: {
         removeComments: true,

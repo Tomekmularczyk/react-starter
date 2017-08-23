@@ -44,7 +44,6 @@ module.exports = {
       template: './config/index.ejs',
       filename: 'index.html',
       inject: 'body',
-      hash: true,
     }),
     new webpack.DefinePlugin({
       'process.env': {
