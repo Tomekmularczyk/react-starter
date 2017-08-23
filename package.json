@@ -30,6 +30,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-react-html-attrs": "^2.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -50,14 +51,9 @@
   },
   "babel": {
     "presets": [
+      ["env", { "modules": false }],
       "react",
-      "stage-2",
-      [
-        "env",
-        {
-          "modules": false
-        }
-      ]
+      "stage-2"
     ],
     "plugins": [
       "react-html-attrs",
