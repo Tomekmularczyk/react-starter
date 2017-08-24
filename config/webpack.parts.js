@@ -33,7 +33,7 @@ exports.setOutput = directory => ({
 exports.resolveProjectDependencies = {
   resolve: {
     modules: [
-      path.join(__dirname, 'src'),
+      path.join(__dirname, '../src'),
       'node_modules',
     ],
     alias: {
