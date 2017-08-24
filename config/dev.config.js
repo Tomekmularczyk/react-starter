@@ -1,56 +1,31 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const common = require('./common.config');
+const PATHS = require('./paths');
+const merge = require('webpack-merge');
+const parts = require('./webpack.parts');
 
-module.exports = {
-  context: common.context,
-
-  entry: {
+const devConfig = merge([
+  parts.setEntries({
     client: [
       'react-hot-loader/patch',
       'webpack/hot/only-dev-server',
-      './src/client.jsx',
+      PATHS.clientBundleEntry,
     ],
-  },
-
-  output: common.output,
-
-  module: {
-    rules: [
-      ...common.module.rules,
-      {
-        test: /\.(ttf|eot|woff|woff2|png|svg)$/,
-        use: 'url-loader?limit=10000&name=static/[name].[ext]',
-      },
-    ],
-  },
-
-  resolve: common.resolve,
-
-  devtool: 'cheap-module-eval-source-map',
-
-  devServer: {
-    compress: true,
-    hot: true,
-    historyApiFallback: true,
-    overlay: {
-      warnings: false,
-      errors: true,
-    },
-  },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './config/index.ejs',
-      filename: 'index.html',
-      inject: 'body',
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        HOST: JSON.stringify('http://localhost:8080/'),
-      },
-    }),
+  }),
+  parts.setOutput(PATHS.publicDirectory),
+  parts.resolveProjectDependencies,
+  parts.setDevServer,
+  parts.generateDevHTML('./config/index.ejs'),
+  parts.lintJavaScript,
+  parts.transpileJavaScript,
+  parts.generateSourceMaps('cheap-module-eval-source-map'),
+  parts.loadStaticAssets('static/'),
+  parts.defineEnvironmentalVariables({
+    HOST: JSON.stringify('http://localhost:8080/'),
+  }),
+  parts.setExtraPlugins([
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-  ],
-};
+  ]),
+]);
+
+module.exports = devConfig;

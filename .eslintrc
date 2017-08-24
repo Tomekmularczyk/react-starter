@@ -8,6 +8,7 @@
   "rules": {
     "react/no-unknown-property": ["error", { "ignore": ["class", "for"] }],
     "no-underscore-dangle": "off",
+    "max-len": ["warn", 120],
     "no-console": "off"
   },
   "settings": {

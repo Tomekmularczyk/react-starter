@@ -7,7 +7,7 @@
     "build:prod": "webpack --config config/prod.config.js --progress",
     "build:server": "webpack --config config/server.config.js --progress",
     "debug-ssr": "node --inspect dist/server.bundle.js",
-    "production": "npm run build:prod && npm run build:server && node dist/server.bundle.js"
+    "production": "npm run build:prod && npm run build:server && node dist/server.*.bundle.js"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",

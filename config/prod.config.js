@@ -1,60 +1,31 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const common = require('./common.config');
+const PATHS = require('./paths');
+const merge = require('webpack-merge');
+const parts = require('./webpack.parts');
 
-module.exports = {
-  context: common.context,
-
-  entry: {
-    client: './src/client.jsx',
-  },
-
-  output: common.output,
-
-  module: {
-    rules: [
-      ...common.module.rules,
-      {
-        test: /\.(ttf|eot|woff|woff2|png|svg)$/,
-        use: 'url-loader?limit=10000&name=static/[name].[ext]',
-      },
-    ],
-  },
-
-  resolve: common.resolve,
-
-  devtool: 'cheap-module-source-map',
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './config/index.ejs',
-      filename: 'index.ejs',
-      inject: 'body',
-      production: true,
-      minify: {
-        removeComments: true,
-      },
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-        HOST: JSON.stringify('http://dev.imeshup.com/'),
-      },
-    }),
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      comments: false,
-      sourceMap: true,
-      parallel: true,
-      compress: {
-        warnings: false,
-        drop_console: true,
-      },
-    }),
-    new CopyWebpackPlugin([
-      { from: './static', to: './static' },
-    ]),
+const prodConfig = merge([
+  parts.setEntries({
+    client: PATHS.clientBundleEntry,
+  }),
+  parts.setOutput(PATHS.publicDirectory),
+  parts.cleanDirectory(PATHS.mainOutputDirectory),
+  parts.resolveProjectDependencies,
+  parts.attachGitRevision,
+  parts.loadStaticAssets('static/'),
+  parts.generateServerEjsTemplate(PATHS.ejsTemplate),
+  parts.transpileJavaScript,
+  parts.minifyJavaScript,
+  parts.generateSourceMaps('cheap-module-source-map'),
+  parts.defineEnvironmentalVariables({
+    NODE_ENV: JSON.stringify('production'),
+    HOST: JSON.stringify('http://test-app.com/'),
+  }),
+  parts.copy([
+    { from: './static', to: './static' },
+  ]),
+  parts.setExtraPlugins([
     new webpack.optimize.ModuleConcatenationPlugin(),
-  ],
-};
+  ]),
+]);
+
+module.exports = prodConfig;

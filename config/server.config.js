@@ -1,57 +1,34 @@
-const fs = require('fs');
-const path = require('path');
 const webpack = require('webpack');
-const common = require('./common.config');
+const merge = require('webpack-merge');
+const PATHS = require('./paths');
+const parts = require('./webpack.parts');
 
-module.exports = {
-  context: common.context,
-
-  entry: {
-    server: './src/server.jsx',
+const serverConfig = merge([
+  {
+    target: 'node',
+    node: {
+      __filename: false,
+      __dirname: false,
+    },
   },
-
-  output: {
-    filename: '[name].[hash].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    path: path.resolve(__dirname, '../dist'),
-  },
-
-  target: 'node',
-
-  externals: fs.readdirSync('./node_modules').concat([
-    'react-dom/server',
-  ]).reduce((ext, mod) => {
-    ext[mod] = `commonjs ${mod}`;
-    return ext;
-  }, {}),
-
-  node: {
-    __filename: false,
-    __dirname: false,
-  },
-
-  module: {
-    rules: [
-      ...common.module.rules,
-      {
-        test: /\.(ttf|eot|woff|woff2|png|svg)$/,
-        use: 'url-loader?limit=10000&name=public/static/[name].[ext]',
-      },
-    ],
-  },
-
-  resolve: common.resolve,
-
-  devtool: 'source-map',
-
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-        HOST: JSON.stringify('http://localhost:8080/'),
-      },
-    }),
+  parts.setEntries({
+    server: PATHS.serverBundleEntry,
+  }),
+  parts.setOutput(PATHS.mainOutputDirectory),
+  parts.resolveProjectDependencies,
+  parts.transpileJavaScript,
+  parts.loadStaticAssets('public/static/'),
+  parts.generateSourceMaps('source-map'),
+  parts.skipExternalLibrariesOnSSR,
+  parts.attachGitRevision,
+  parts.defineEnvironmentalVariables({
+    NODE_ENV: JSON.stringify('production'),
+    HOST: JSON.stringify('http://localhost:8080/'),
+  }),
+  parts.setExtraPlugins([
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
-  ],
-};
+  ]),
+]);
+
+module.exports = serverConfig;
