@@ -8,7 +8,7 @@
 
 * Project is already configured for development and production use (server-sider rendering).
 * Code used for server side-rendering is not minified so its possible to debug ssr with Chrome-Node Dev-Tools.
-* Client bundle is minified but can generate source-maps by uncommenting `devtool` in production config.
+* Production bundle gets minified and split out vendor dependencies.
 
 Run the project:
 1. `yarn` - install dependencies

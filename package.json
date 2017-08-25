@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config config/dev.config.js --progress",
-    "build:prod": "webpack --config config/prod.config.js --progress",
-    "build:server": "webpack --config config/server.config.js --progress",
+    "dev": "webpack-dev-server --config config/webpack.config.js --env.development --progress",
+    "build:prod": "webpack --config config/webpack.config.js --env.production --progress",
+    "build:server": "webpack --config config/webpack.config.js --env.server --progress",
     "debug-ssr": "node --inspect dist/server.bundle.js",
-    "production": "npm run build:prod && npm run build:server && node dist/server.bundle.js"
+    "production": "npm run build:prod && npm run build:server && node dist/server.*.bundle.js"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
@@ -19,13 +19,11 @@
     "react-dom": "^15.6.1",
     "react-hot-loader": "next",
     "react-redux": "^5.0.6",
-    "react-router": "^4.1.2",
-    "react-router-dom": "^4.1.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "styled-jsx-postcss": "^0.2.0",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "styled-jsx-postcss": "^0.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -37,31 +35,22 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.16",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.2.1",
+    "eslint-plugin-react": "^7.3.0",
     "file-loader": "^0.11.2",
+    "git-revision-webpack-plugin": "^2.5.1",
     "html-webpack-plugin": "^2.30.1",
     "precss": "^1.4.0",
-    "url-loader": "^0.5.9"
-  },
-  "babel": {
-    "presets": [
-      ["env", { "modules": false }],
-      "react",
-      "stage-2"
-    ],
-    "plugins": [
-      "react-html-attrs",
-      "transform-runtime",
-      "transform-class-properties",
-      "styled-jsx-postcss/babel",
-      "react-hot-loader/babel"
-    ]
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-merge": "^4.1.0"
   },
   "postcss": {
     "plugins": {
