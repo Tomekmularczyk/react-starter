@@ -69,7 +69,7 @@ const serverConfig = merge([
   parts.transpileJavaScript,
   parts.loadStaticAssets('public/static/'),
   parts.generateSourceMaps('source-map'),
-  parts.skipExternalLibrariesOnSSR,
+  parts.skipExternalLibrariesForServerBundle,
   parts.attachGitRevision,
   parts.defineEnvironmentalVariables({
     NODE_ENV: JSON.stringify('production'),

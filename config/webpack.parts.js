@@ -125,7 +125,7 @@ exports.generateSourceMaps = type => ({
 /**************************************************************************************************************
  *         E  X  T  E  R  N  A  L  S
  **************************************************************************************************************/
-exports.skipExternalLibrariesOnSSR = {
+exports.skipExternalLibrariesForServerBundle = {
   externals: fs.readdirSync('./node_modules').concat([
     'react-dom/server',
   ]).reduce((ext, mod) => {
