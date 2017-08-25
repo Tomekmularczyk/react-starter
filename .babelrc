@@ -7,7 +7,6 @@
   "plugins": [
     "react-html-attrs",
     "transform-runtime",
-    "transform-class-properties",
     "styled-jsx-postcss/babel",
     "react-hot-loader/babel"
   ]
