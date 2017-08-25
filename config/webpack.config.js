@@ -33,7 +33,7 @@ const productionConfig = merge([
   parts.setOutput(PATHS.publicDirectory, true),
   parts.cleanDirectory(PATHS.mainOutputDirectory),
   parts.resolveProjectDependencies,
-  parts.attachGitRevision,
+  parts.generateGitRevision,
   parts.loadStaticAssets('static/'),
   parts.generateServerEjsTemplate(PATHS.ejsTemplate),
   parts.transpileJavaScript,
@@ -68,7 +68,7 @@ const serverConfig = merge([
   parts.loadStaticAssets('public/static/'),
   parts.generateSourceMaps('source-map'),
   parts.skipExternalLibrariesForServerBundle,
-  parts.attachGitRevision,
+  parts.generateGitRevision,
   parts.defineEnvironmentalVariables({
     NODE_ENV: JSON.stringify('production'),
   }),

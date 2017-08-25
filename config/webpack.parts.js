@@ -131,7 +131,7 @@ exports.cleanDirectory = pathToDirectory => ({
   ],
 });
 
-exports.attachGitRevision = {
+exports.generateGitRevision = {
   plugins: [
     new GitRevisionPlugin(),
   ],
