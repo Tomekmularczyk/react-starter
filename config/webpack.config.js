@@ -19,9 +19,6 @@ const devConfig = merge([
   parts.generateSourceMaps('cheap-module-eval-source-map'),
   parts.loadStaticAssets('static/'),
   parts.generateDevHTML('./config/index.ejs'),
-  parts.defineEnvironmentalVariables({
-    HOST: JSON.stringify('http://localhost:8080/'),
-  }),
   parts.setExtraPlugins([
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -43,7 +40,6 @@ const productionConfig = merge([
   parts.generateSourceMaps('cheap-module-source-map'),
   parts.defineEnvironmentalVariables({
     NODE_ENV: JSON.stringify('production'),
-    HOST: JSON.stringify('http://test-app.com/'),
   }),
   parts.copy([
     { from: './static', to: './static' },
@@ -73,7 +69,6 @@ const serverConfig = merge([
   parts.attachGitRevision,
   parts.defineEnvironmentalVariables({
     NODE_ENV: JSON.stringify('production'),
-    HOST: JSON.stringify('http://localhost:8080/'),
   }),
   parts.setExtraPlugins([
     new webpack.NamedModulesPlugin(),
