@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config config/dev.config.js --progress",
-    "build:prod": "webpack --config config/prod.config.js --progress",
-    "build:server": "webpack --config config/server.config.js --progress",
+    "dev": "webpack-dev-server --config config/webpack.config.js --env.development --progress",
+    "build:prod": "webpack --config config/webpack.config.js --env.production --progress",
+    "build:server": "webpack --config config/webpack.config.js --env.server --progress",
     "debug-ssr": "node --inspect dist/server.bundle.js",
     "production": "npm run build:prod && npm run build:server && node dist/server.*.bundle.js"
   },
