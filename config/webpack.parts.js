@@ -1,5 +1,6 @@
 /* eslint-disable spaced-comment */
 const path = require('path');
+const PATHS = require('./paths');
 const fs = require('fs');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -33,13 +34,12 @@ exports.setOutput = pathToDirectory => ({
 exports.resolveProjectDependencies = {
   resolve: {
     modules: [
-      path.join(__dirname, '../src'),
+      path.join(PATHS.root, '/src'),
       'node_modules',
     ],
     alias: {
-      common: path.resolve(__dirname, '../src/app/_common'),
-      static: path.resolve(__dirname, '../static'),
-      data: path.resolve(__dirname, '../src/data'),
+      static: path.join(PATHS.root, '/static'),
+      data: path.join(PATHS.root, '/src/data'),
     },
     extensions: ['.js', '.jsx'],
   },
@@ -140,7 +140,7 @@ exports.skipExternalLibrariesOnSSR = {
  **************************************************************************************************************/
 exports.cleanDirectory = pathToDirectory => ({
   plugins: [
-    new CleanWebpackPlugin([pathToDirectory], { root: path.resolve(__dirname, '..'), verbose: true }),
+    new CleanWebpackPlugin([pathToDirectory], { root: PATHS.root, verbose: true }),
   ],
 });
 
