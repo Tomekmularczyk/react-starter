@@ -1,6 +1,6 @@
 const webpack = require('webpack');
-const PATHS = require('./paths');
 const merge = require('webpack-merge');
+const PATHS = require('./paths');
 const parts = require('./webpack.parts');
 
 const devConfig = merge([
@@ -18,7 +18,7 @@ const devConfig = merge([
   parts.transpileJavaScript,
   parts.generateSourceMaps('cheap-module-eval-source-map'),
   parts.loadStaticAssets('static/'),
-  parts.generateDevHTML('./config/index.ejs'),
+  parts.generateDevHTML(PATHS.ejsTemplate),
   parts.setExtraPlugins([
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -28,8 +28,9 @@ const devConfig = merge([
 const productionConfig = merge([
   parts.setEntries({
     client: PATHS.clientBundleEntry,
+    vendor: ['react', 'react-dom', 'redux'],
   }),
-  parts.setOutput(PATHS.publicDirectory),
+  parts.setOutput(PATHS.publicDirectory, true),
   parts.cleanDirectory(PATHS.mainOutputDirectory),
   parts.resolveProjectDependencies,
   parts.attachGitRevision,
@@ -38,6 +39,7 @@ const productionConfig = merge([
   parts.transpileJavaScript,
   parts.minifyJavaScript,
   parts.generateSourceMaps('cheap-module-source-map'),
+  parts.extractVendorModules('vendor'),
   parts.defineEnvironmentalVariables({
     NODE_ENV: JSON.stringify('production'),
   }),
@@ -60,7 +62,7 @@ const serverConfig = merge([
   parts.setEntries({
     server: PATHS.serverBundleEntry,
   }),
-  parts.setOutput(PATHS.mainOutputDirectory),
+  parts.setOutput(PATHS.mainOutputDirectory, true),
   parts.resolveProjectDependencies,
   parts.transpileJavaScript,
   parts.loadStaticAssets('public/static/'),

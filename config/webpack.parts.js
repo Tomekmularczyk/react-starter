@@ -19,14 +19,18 @@ exports.setEntries = entries => ({
 /**************************************************************************************************************
  *         O  U  T  P  U  T
  **************************************************************************************************************/
-exports.setOutput = pathToDirectory => ({
-  output: {
-    path: pathToDirectory,
-    filename: '[name].[hash].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    publicPath: '/',
-  },
-});
+exports.setOutput = (pathToDirectory, isProduction = false) => {
+  // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
+  const filename = isProduction ? '[name].[chunkhash].bundle.js' : '[name].bundle.js';
+  return {
+    output: {
+      filename,
+      path: pathToDirectory,
+      chunkFilename: '[name].bundle.js',
+      publicPath: '/',
+    },
+  };
+};
 
 /**************************************************************************************************************
  *         R  E  S  O  L  V  E
@@ -146,9 +150,7 @@ exports.cleanDirectory = pathToDirectory => ({
 
 exports.attachGitRevision = {
   plugins: [
-    new webpack.BannerPlugin({
-      banner: new GitRevisionPlugin().version(),
-    }),
+    new GitRevisionPlugin(),
   ],
 };
 
@@ -165,6 +167,19 @@ exports.minifyJavaScript = {
     }),
   ],
 };
+
+// based on https://webpack.js.org/guides/caching/
+exports.extractVendorModules = entryName => ({
+  plugins: [
+    new webpack.HashedModuleIdsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: entryName,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'runtime',
+    }),
+  ],
+});
 
 exports.generateDevHTML = pathToTemplate => ({
   plugins: [
