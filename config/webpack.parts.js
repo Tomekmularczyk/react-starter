@@ -1,12 +1,12 @@
 /* eslint-disable spaced-comment */
 const path = require('path');
-const PATHS = require('./paths');
 const fs = require('fs');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const PATHS = require('./paths');
 
 
 /****************************************
