@@ -10,6 +10,29 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 /****************************************
+ *         D  E  V    S  E  R  V  E  R
+ ***************************************/
+exports.setDevServer = {
+  devServer: {
+    compress: true,
+    hot: true,
+    historyApiFallback: true,
+    overlay: {
+      warnings: false,
+      errors: true,
+    },
+  },
+};
+
+/****************************************
+ *         D  E  V  T  O  O  L
+ ***************************************/
+exports.generateSourceMaps = type => ({
+  devtool: type,
+});
+
+
+/****************************************
  *         E  N  T  R  Y
  ***************************************/
 exports.setEntries = entries => ({
@@ -17,36 +40,15 @@ exports.setEntries = entries => ({
 });
 
 /****************************************
- *         O  U  T  P  U  T
+ *         E  X  T  E  R  N  A  L  S
  ***************************************/
-exports.setOutput = (pathToDirectory, isProduction = false) => {
-  // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
-  const filename = isProduction ? '[name].[chunkhash].bundle.js' : '[name].bundle.js';
-  return {
-    output: {
-      filename,
-      path: pathToDirectory,
-      chunkFilename: '[name].bundle.js',
-      publicPath: '/',
-    },
-  };
-};
-
-/****************************************
- *         R  E  S  O  L  V  E
- ***************************************/
-exports.resolveProjectDependencies = {
-  resolve: {
-    modules: [
-      path.join(PATHS.root, '/src'),
-      'node_modules',
-    ],
-    alias: {
-      static: path.join(PATHS.root, '/static'),
-      data: path.join(PATHS.root, '/src/data'),
-    },
-    extensions: ['.js', '.jsx'],
-  },
+exports.skipExternalLibrariesForServerBundle = {
+  externals: fs.readdirSync('./node_modules').concat([
+    'react-dom/server',
+  ]).reduce((ext, mod) => {
+    ext[mod] = `commonjs ${mod}`;
+    return ext;
+  }, {}),
 };
 
 /****************************************
@@ -105,39 +107,20 @@ exports.loadStaticAssets = relativePath => ({
 });
 
 /****************************************
- *         D  E  V    S  E  R  V  E  R
+ *         O  U  T  P  U  T
  ***************************************/
-exports.setDevServer = {
-  devServer: {
-    compress: true,
-    hot: true,
-    historyApiFallback: true,
-    overlay: {
-      warnings: false,
-      errors: true,
+exports.setOutput = (pathToDirectory, isProduction = false) => {
+  // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
+  const filename = isProduction ? '[name].[chunkhash].bundle.js' : '[name].bundle.js';
+  return {
+    output: {
+      filename,
+      path: pathToDirectory,
+      chunkFilename: '[name].bundle.js',
+      publicPath: '/',
     },
-  },
+  };
 };
-
-/****************************************
- *         D  E  V  T  O  O  L
- ***************************************/
-exports.generateSourceMaps = type => ({
-  devtool: type,
-});
-
-/****************************************
- *         E  X  T  E  R  N  A  L  S
- ***************************************/
-exports.skipExternalLibrariesForServerBundle = {
-  externals: fs.readdirSync('./node_modules').concat([
-    'react-dom/server',
-  ]).reduce((ext, mod) => {
-    ext[mod] = `commonjs ${mod}`;
-    return ext;
-  }, {}),
-};
-
 
 /****************************************
  *         P  L  U  G  I  N  S
@@ -221,3 +204,21 @@ exports.copy = mappingsArray => ({
     new CopyWebpackPlugin(mappingsArray),
   ],
 });
+
+
+/****************************************
+ *         R  E  S  O  L  V  E
+ ***************************************/
+exports.resolveProjectDependencies = {
+  resolve: {
+    modules: [
+      path.join(PATHS.root, '/src'),
+      'node_modules',
+    ],
+    alias: {
+      static: path.join(PATHS.root, '/static'),
+      data: path.join(PATHS.root, '/src/data'),
+    },
+    extensions: ['.js', '.jsx'],
+  },
+};
