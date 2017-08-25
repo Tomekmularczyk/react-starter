@@ -18,9 +18,9 @@ exports.setEntries = entries => ({
 /**************************************************************************************************************
  *         O  U  T  P  U  T
  **************************************************************************************************************/
-exports.setOutput = directory => ({
+exports.setOutput = pathToDirectory => ({
   output: {
-    path: directory,
+    path: pathToDirectory,
     filename: '[name].[hash].bundle.js',
     chunkFilename: '[name].bundle.js',
     publicPath: '/',
@@ -83,7 +83,7 @@ exports.transpileJavaScript = {
   },
 };
 
-exports.loadStaticAssets = directory => ({
+exports.loadStaticAssets = relativePath => ({
   module: {
     rules: [
       {
@@ -92,7 +92,7 @@ exports.loadStaticAssets = directory => ({
           loader: 'url-loader',
           options: {
             limit: 8000,
-            name: `${directory}[name].[hash].[ext]`,
+            name: `${relativePath}[name].[hash].[ext]`,
           },
         },
       },
@@ -138,9 +138,9 @@ exports.skipExternalLibrariesOnSSR = {
 /**************************************************************************************************************
  *         P  L  U  G  I  N  S
  **************************************************************************************************************/
-exports.cleanDirectory = directory => ({
+exports.cleanDirectory = pathToDirectory => ({
   plugins: [
-    new CleanWebpackPlugin([directory], { root: path.resolve(__dirname, '..'), verbose: true }),
+    new CleanWebpackPlugin([pathToDirectory], { root: path.resolve(__dirname, '..'), verbose: true }),
   ],
 });
 
@@ -166,20 +166,20 @@ exports.minifyJavaScript = {
   ],
 };
 
-exports.generateDevHTML = templatePath => ({
+exports.generateDevHTML = pathToTemplate => ({
   plugins: [
     new HTMLWebpackPlugin({
-      template: templatePath,
+      template: pathToTemplate,
       filename: 'index.html',
       inject: 'body',
     }),
   ],
 });
 
-exports.generateServerEjsTemplate = templatePath => ({
+exports.generateServerEjsTemplate = pathToTemplate => ({
   plugins: [
     new HTMLWebpackPlugin({
-      template: templatePath,
+      template: pathToTemplate,
       filename: 'index.ejs',
       inject: 'body',
       minify: {
