@@ -222,3 +222,14 @@ exports.resolveProjectDependencies = {
     extensions: ['.js', '.jsx'],
   },
 };
+
+/****************************************
+ *         T  A  R  G  E  T
+ ***************************************/
+exports.targetNode = {
+  target: 'node',
+  node: {
+    __filename: false,
+    __dirname: false,
+  },
+};

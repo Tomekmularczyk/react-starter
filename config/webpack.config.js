@@ -52,13 +52,7 @@ const productionConfig = merge([
 ]);
 
 const serverConfig = merge([
-  {
-    target: 'node',
-    node: {
-      __filename: false,
-      __dirname: false,
-    },
-  },
+  parts.targetNode,
   parts.setEntries({
     server: PATHS.serverBundleEntry,
   }),
