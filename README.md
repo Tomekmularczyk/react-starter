@@ -13,7 +13,8 @@
 Run the project:
 1. `yarn` - install dependencies
 2. `yarn dev` - start in development mode
-3. `yarn production` - build project to /dist directory and run it on node server,
+3. `yarn build` - build project to /dist directory,
+5. `yarn start-server` - run server bundle,
 4. `yarn debug-ssr` - run (builded) project with chrome-dev-tools debugging option
 
 ### Technology stack: ###
