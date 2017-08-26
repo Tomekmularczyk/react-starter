@@ -206,7 +206,7 @@ exports.copy = mappingsArray => ({
 });
 
 exports.runWebpackBundleAnalyzer = {
-  plugin: [
+  plugins: [
     new BundleAnalyzerPlugin(),
   ],
 };
