@@ -6,7 +6,7 @@
     "node": true
   },
   "rules": {
-    "react/no-unknown-property": ["error", { "ignore": ["class", "for"] }],
+    "react/no-unknown-property": ["error", { "ignore": ["class"] }],
     "no-underscore-dangle": "off",
     "no-trailing-spaces": "off",
     "max-len": ["warn", 120],
@@ -14,7 +14,7 @@
   },
   "settings": {
     "import/resolver": {
-      "webpack": { "config": "./config/webpack.config.js" }
+      "webpack": { "config": "./config/webpack.configs.js" }
     },
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true

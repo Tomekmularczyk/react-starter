@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PATHS = require('./paths');
 
 
@@ -30,7 +31,6 @@ exports.setDevServer = {
 exports.generateSourceMaps = type => ({
   devtool: type,
 });
-
 
 /****************************************
  *         E  N  T  R  Y
@@ -205,6 +205,11 @@ exports.copy = mappingsArray => ({
   ],
 });
 
+exports.runWebpackBundleAnalyzer = {
+  plugin: [
+    new BundleAnalyzerPlugin(),
+  ],
+};
 
 /****************************************
  *         R  E  S  O  L  V  E

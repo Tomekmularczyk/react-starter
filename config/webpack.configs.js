@@ -72,22 +72,8 @@ const serverConfig = merge([
   ]),
 ]);
 
-
-module.exports = (env) => {
-  if (!env || env.development) { // !env - return default config for eslint-plugin-resolver-webpack
-    console.log('Using webpack DEVELOPMENT config');
-    return devConfig;
-  }
-
-  if (env.production) {
-    console.log('Using webpack PRODUCTION config');
-    return productionConfig;
-  }
-
-  if (env.server) {
-    console.log('Using webpack SERVER config');
-    return serverConfig;
-  }
-
-  throw new Error('Unknown env configuration passed');
-};
+exports.devConfig = devConfig;
+exports.productionConfig = productionConfig;
+exports.serverConfig = serverConfig;
+// return default config for eslint-plugin-resolver-webpack
+module.exports.default = devConfig;

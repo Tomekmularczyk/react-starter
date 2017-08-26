@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config config/webpack.config.js --env.development --progress",
-    "build:prod": "webpack --config config/webpack.config.js --env.production --progress",
-    "build:server": "webpack --config config/webpack.config.js --env.server --progress",
-    "debug-ssr": "node --inspect dist/server.bundle.js",
+    "dev": "webpack-dev-server --config config/webpack.run.js --progress --env.development",
+    "build:prod": "webpack --config config/webpack.run.js --progress --env.production",
+    "build:server": "webpack --config config/webpack.run.js --progress --env.server",
+    "debug-ssr": "node --inspect dist/server.*.bundle.js",
     "production": "npm run build:prod && npm run build:server && node dist/server.*.bundle.js"
   },
   "dependencies": {
@@ -49,6 +49,7 @@
     "precss": "^1.4.0",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
+    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0"
   },
