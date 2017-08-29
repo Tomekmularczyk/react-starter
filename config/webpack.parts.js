@@ -180,6 +180,7 @@ exports.generateServerEjsTemplate = pathToTemplate => ({
       template: pathToTemplate,
       filename: 'index.ejs',
       inject: 'body',
+      production: true, //  render placeholders for ssr
       minify: {
         removeComments: true,
       },
