@@ -5,7 +5,7 @@ const IndexPage = () => (
   <div class="IndexPage">
     <div class="header">
       <img src={logo} class="logo" alt="logo" />
-      <h2>Welcome to React yeah</h2>
+      <h2>Yeah, React!</h2>
     </div>
     <style jsx>{`
       .IndexPage {

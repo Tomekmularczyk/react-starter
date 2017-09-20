@@ -1,7 +1,7 @@
 # README #
 
 1. Clone the repo.
-2. Initialize new git repo (`rm -rf .git` and `git init`)
+2. Remove existing (`rm -rf .git`) and initialize new git repo (`git init`).
 3. Change *name* in package.json file.
 
 ### Quick summary: ###
@@ -21,9 +21,10 @@ Run the project:
 * Yarn for managing dependencies
 * React and Redux
 * React-Router v4
-* Webpack | WebpackDevServer | HotModuleReplacements
+* WebpackDevServer | HotModuleReplacements
 * Express and EJS templates for server-side rendering 
 * styled-jsx-postcss together with 'precss' plugin and 'autoprefixer'
+* focus-ring polyfill
 * babel
     * babel-runtime
     * supports latest EcmaScript features and stage-2 preset.

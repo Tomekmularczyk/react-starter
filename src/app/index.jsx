@@ -15,6 +15,10 @@ export default (
         padding: 0;
         font-family: sans-serif;
       }
+
+      .js-focus-ring :focus:not(.focus-ring) {
+        outline-width: 0;
+      }
     `}</style>
   </span>
 );

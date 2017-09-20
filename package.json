@@ -24,7 +24,8 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "styled-jsx-postcss": "^0.2.0"
+    "styled-jsx-postcss": "^0.2.0",
+    "wicg-focus-ring": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

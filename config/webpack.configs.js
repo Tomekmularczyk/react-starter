@@ -8,6 +8,7 @@ const devConfig = merge([
     client: [
       'react-hot-loader/patch',
       'webpack/hot/only-dev-server',
+      'wicg-focus-ring',
       PATHS.clientBundleEntry,
     ],
   }),
@@ -27,7 +28,10 @@ const devConfig = merge([
 
 const productionConfig = merge([
   parts.setEntries({
-    client: PATHS.clientBundleEntry,
+    client: [
+      'wicg-focus-ring',
+      PATHS.clientBundleEntry,
+    ],
     vendor: ['react', 'react-dom', 'redux'],
   }),
   parts.setOutput(PATHS.publicDirectory, true),
