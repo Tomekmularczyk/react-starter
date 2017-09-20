@@ -36,7 +36,7 @@ exports.generateSourceMaps = type => ({
  *         E  N  T  R  Y
  ***************************************/
 exports.setEntries = entries => ({
-  entry: { ...entries }, //  require named entries - no arrays
+  entry: entries, //  require named entries - no arrays
 });
 
 /****************************************
