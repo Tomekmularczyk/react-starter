@@ -206,6 +206,12 @@ exports.copy = mappingsArray => ({
   ],
 });
 
+exports.concatenateModulesForProduction = {
+  plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
+  ],
+};
+
 exports.runWebpackBundleAnalyzer = {
   plugins: [
     new BundleAnalyzerPlugin(),

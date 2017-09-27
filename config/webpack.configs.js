@@ -50,9 +50,7 @@ const productionConfig = merge([
   parts.copy([
     { from: './static', to: './static' },
   ]),
-  parts.setExtraPlugins([
-    new webpack.optimize.ModuleConcatenationPlugin(),
-  ]),
+  parts.concatenateModulesForProduction,
 ]);
 
 const serverConfig = merge([
@@ -70,9 +68,9 @@ const serverConfig = merge([
   parts.defineEnvironmentalVariables({
     NODE_ENV: JSON.stringify('production'),
   }),
+  parts.concatenateModulesForProduction,
   parts.setExtraPlugins([
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin(),
   ]),
 ]);
 
