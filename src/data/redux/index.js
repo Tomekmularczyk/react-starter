@@ -20,7 +20,7 @@ function createState(middleware) {
 /**
  * creates store. Pass 'true' for logging redux.
  */
-function configureStore(logActions) {
+export default function configureStore(logActions) {
   const middleware = [];
   const logger = createLogger({ collapsed: true, diff: true });
   if (logActions) middleware.push(logger);
@@ -37,6 +37,3 @@ function configureStore(logActions) {
 
   return store;
 }
-
-const store = configureStore(true);
-export default store;

@@ -61,7 +61,7 @@ const serverConfig = merge([
   parts.setOutput(PATHS.mainOutputDirectory, true),
   parts.resolveProjectDependencies,
   parts.transpileJavaScript,
-  parts.loadStaticAssets('public/static/'),
+  parts.loadStaticAssets('static/'),
   parts.generateSourceMaps('source-map'),
   parts.skipExternalLibrariesForServerBundle,
   parts.generateGitRevision,

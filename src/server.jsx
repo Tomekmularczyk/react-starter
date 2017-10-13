@@ -5,7 +5,7 @@ import { flushToHTML } from 'styled-jsx-postcss/server';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { Provider } from 'react-redux';
-import store from 'data/redux/index';
+import configureStore from 'data/redux/index';
 import app from '../src/app/index';
 
 const server = Express();
@@ -18,8 +18,9 @@ server.set('views', path.join(__dirname, '/public'));
 server.use(Express.static(path.join(__dirname, '/public'), { index: false }));
 
 server.get('*', (req, res) => {
-  const context = {};
+  const store = configureStore();
 
+  const context = {};
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
