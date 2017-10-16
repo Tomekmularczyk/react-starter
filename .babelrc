@@ -7,7 +7,7 @@
   "plugins": [
     "react-html-attrs",
     "transform-runtime",
-    "styled-jsx-postcss/babel",
+    ["styled-jsx/babel", { "plugins": ["styled-jsx-plugin-sass"] }],
     "react-hot-loader/babel"
   ]
 }
