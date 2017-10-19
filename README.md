@@ -28,5 +28,4 @@ Run the project:
 * babel
     * babel-runtime
     * supports latest EcmaScript features and stage-2 preset.
-    * 'class' attributes in jsx
 * eslint - airbnb extension
