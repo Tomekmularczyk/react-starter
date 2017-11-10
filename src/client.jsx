@@ -6,10 +6,11 @@ import { Provider } from 'react-redux';
 import configureStore from 'data/redux';
 import routes from './app/index';
 
+const store = configureStore(true);
 function render() {
   ReactDOM.render(
     <AppContainer>
-      <Provider store={configureStore(true)}>
+      <Provider store={store}>
         <BrowserRouter>
           {routes}
         </BrowserRouter>

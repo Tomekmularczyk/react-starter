@@ -18,10 +18,6 @@ exports.setDevServer = {
     compress: true,
     hot: true,
     historyApiFallback: true,
-    overlay: {
-      warnings: false,
-      errors: true,
-    },
   },
 };
 
