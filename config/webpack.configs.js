@@ -42,7 +42,7 @@ const productionConfig = merge([
   parts.generateServerEjsTemplate(PATHS.ejsTemplate),
   parts.transpileJavaScript,
   parts.minifyJavaScript,
-  parts.generateSourceMaps('cheap-module-source-map'),
+  parts.generateSourceMaps('source-map'),
   parts.extractVendorModules('vendor'),
   parts.defineEnvironmentalVariables({
     NODE_ENV: JSON.stringify('production'),

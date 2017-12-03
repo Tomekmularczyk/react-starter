@@ -16,7 +16,7 @@ export default (
         font-family: sans-serif;
       }
 
-      .js-focus-ring :focus:not(.focus-ring) {
+      .js-focus-ring *:focus:not(.focus-ring) {
         outline-width: 0;
       }
     `}</style>
