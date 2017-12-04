@@ -17,13 +17,10 @@ function createState(middleware) {
   return createStore(reducers, applyMiddleware(...middleware));
 }
 
-/**
- * creates store. Pass 'true' for logging redux.
- */
-export default function configureStore(logActions) {
+export default function configureStore() {
   const middleware = [];
   const logger = createLogger({ collapsed: true, diff: true });
-  if (logActions) middleware.push(logger);
+  if (process.env.NODE_ENV !== 'production') middleware.push(logger);
 
   const store = createState(middleware);
 
