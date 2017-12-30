@@ -1,4 +1,6 @@
-const { devConfig, productionConfig, serverConfig } = require('./webpack.configs');
+const devConfig = require('./dev.config');
+const prodConfig = require('./prod.config');
+const serverConfig = require('./server.config');
 
 module.exports = (env) => {
   if (env.development) {
@@ -8,7 +10,7 @@ module.exports = (env) => {
 
   if (env.production) {
     console.log('Using webpack PRODUCTION config');
-    return productionConfig;
+    return prodConfig;
   }
 
   if (env.server) {
