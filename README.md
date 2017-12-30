@@ -10,13 +10,13 @@
 * Code used for server side-rendering is not minified so its possible to debug ssr with Chrome-Node Dev-Tools.
 * Production bundle gets minified and split out with vendor dependencies.
 
-#Run the project:
-*. `yarn` - install dependencies
-*. `yarn dev` - start in development mode
-*. `yarn build` - build project to /dist directory,
-*. `yarn start` - run server bundle,
+#### Run the project:
+* `yarn` - install dependencies
+* `yarn dev` - start in development mode
+* `yarn build` - build project to /dist directory,
+* `yarn start` - run server bundle,
 
-### Other handy commands
+#### Other handy commands
 * `yarn debug-ssr` - debug (built) project with chrome-dev-tools
 * `yarn lint` - check `src` directory for eslint errors
 
