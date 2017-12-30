@@ -11,7 +11,7 @@ const productionConfig = merge([
     vendor: ['react', 'react-dom', 'redux'],
   }),
   parts.setOutput(PATHS.publicDirectory, true),
-  parts.cleanDirectory(PATHS.mainOutputDirectory),
+  parts.cleanDirectory(PATHS.mainOutputDirectory, PATHS.root),
   parts.resolveDependencies(MODULE_ALIASES),
   parts.generateGitRevision,
   parts.loadStaticAssets('static/'),

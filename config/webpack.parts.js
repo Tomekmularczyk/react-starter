@@ -6,8 +6,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { PATHS } = require('./env');
-
 
 /****************************************
  *         D  E  V    S  E  R  V  E  R
@@ -104,9 +102,9 @@ exports.setOutput = (pathToDirectory, isProduction = false) => {
 /****************************************
  *         P  L  U  G  I  N  S
  ***************************************/
-exports.cleanDirectory = pathToDirectory => ({
+exports.cleanDirectory = (directory, projectRoot) => ({
   plugins: [
-    new CleanWebpackPlugin([pathToDirectory], { root: PATHS.root, verbose: true }),
+    new CleanWebpackPlugin([directory], { root: projectRoot, verbose: true }),
   ],
 });
 
