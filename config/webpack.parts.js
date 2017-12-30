@@ -1,5 +1,4 @@
 /* eslint-disable spaced-comment */
-const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -7,7 +6,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const PATHS = require('./paths');
+const { PATHS } = require('./env');
 
 
 /****************************************
@@ -18,6 +17,8 @@ exports.setDevServer = {
     compress: true,
     hot: true,
     historyApiFallback: true,
+    disableHostCheck: true,
+    host: '127.0.0.1',
   },
 };
 
@@ -32,7 +33,7 @@ exports.generateSourceMaps = type => ({
  *         E  N  T  R  Y
  ***************************************/
 exports.setEntries = entries => ({
-  entry: { ...entries }, //  require named entries - no arrays
+  entry: { ...entries },
 });
 
 /****************************************
@@ -169,7 +170,9 @@ exports.generateServerEjsTemplate = pathToTemplate => ({
 exports.defineEnvironmentalVariables = variables => ({
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': variables,
+      'process.env': {
+        ...variables,
+      },
     }),
   ],
 });
@@ -199,19 +202,14 @@ exports.runWebpackBundleAnalyzer = {
 /****************************************
  *         R  E  S  O  L  V  E
  ***************************************/
-exports.resolveProjectDependencies = {
+exports.resolveDependencies = aliases => ({
   resolve: {
-    modules: [
-      path.join(PATHS.root, '/src'),
-      'node_modules',
-    ],
     alias: {
-      static: path.join(PATHS.root, '/static'),
-      data: path.join(PATHS.root, '/src/data'),
+      ...aliases,
     },
     extensions: ['.js', '.jsx'],
   },
-};
+});
 
 /****************************************
  *         T  A  R  G  E  T

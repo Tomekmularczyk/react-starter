@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const PATHS = require('./paths');
+const { PATHS, MODULE_ALIASES } = require('./env');
 const parts = require('./webpack.parts');
 
 const devConfig = merge([
@@ -13,7 +13,7 @@ const devConfig = merge([
     ],
   }),
   parts.setOutput(PATHS.publicDirectory),
-  parts.resolveProjectDependencies,
+  parts.resolveDependencies(MODULE_ALIASES),
   parts.setDevServer,
   parts.transpileJavaScript,
   parts.generateSourceMaps('cheap-module-eval-source-map'),

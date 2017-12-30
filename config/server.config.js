@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const PATHS = require('./paths');
+const { PATHS, MODULE_ALIASES } = require('./env');
 const parts = require('./webpack.parts');
 
 const serverConfig = merge([
@@ -9,7 +9,7 @@ const serverConfig = merge([
     server: PATHS.serverBundleEntry,
   }),
   parts.setOutput(PATHS.mainOutputDirectory, true),
-  parts.resolveProjectDependencies,
+  parts.resolveDependencies(MODULE_ALIASES),
   parts.transpileJavaScript,
   parts.loadStaticAssets('static/'),
   parts.generateSourceMaps('source-map'),
