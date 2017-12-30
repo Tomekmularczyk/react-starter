@@ -50,24 +50,6 @@ exports.skipExternalLibrariesForServerBundle = {
 /****************************************
  *         M  O  D  U  L  E
  ***************************************/
-exports.lintJavaScript = {
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        enforce: 'pre',
-        exclude: /node_modules/,
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            cache: true,
-          },
-        },
-      },
-    ],
-  },
-};
-
 exports.transpileJavaScript = {
   module: {
     rules: [

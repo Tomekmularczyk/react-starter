@@ -15,7 +15,6 @@ const devConfig = merge([
   parts.setOutput(PATHS.publicDirectory),
   parts.resolveProjectDependencies,
   parts.setDevServer,
-  parts.lintJavaScript,
   parts.transpileJavaScript,
   parts.generateSourceMaps('cheap-module-eval-source-map'),
   parts.loadStaticAssets('static/'),

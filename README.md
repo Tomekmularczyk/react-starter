@@ -10,12 +10,15 @@
 * Code used for server side-rendering is not minified so its possible to debug ssr with Chrome-Node Dev-Tools.
 * Production bundle gets minified and split out with vendor dependencies.
 
-Run the project:
-1. `yarn` - install dependencies
-2. `yarn dev` - start in development mode
-3. `yarn build` - build project to /dist directory,
-5. `yarn start` - run server bundle,
-4. `yarn debug-ssr` - run (builded) project with chrome-dev-tools debugging option
+#Run the project:
+*. `yarn` - install dependencies
+*. `yarn dev` - start in development mode
+*. `yarn build` - build project to /dist directory,
+*. `yarn start` - run server bundle,
+
+### Other handy commands
+* `yarn debug-ssr` - debug (built) project with chrome-dev-tools
+* `yarn lint` - check `src` directory for eslint errors
 
 ### Technology stack: ###
 * Yarn for managing dependencies
@@ -23,7 +26,7 @@ Run the project:
 * React-Router v4
 * WebpackDevServer | HotModuleReplacements
 * Express and EJS templates for server-side rendering 
-* styled-jsx-postcss together with 'precss' plugin and 'autoprefixer'
+* styled-jsx with styled-jsx-plugin-sass
 * focus-ring polyfill
 * babel
     * babel-runtime
