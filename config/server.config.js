@@ -16,7 +16,7 @@ const serverConfig = merge([
   parts.skipExternalLibrariesForServerBundle,
   parts.generateGitRevision,
   parts.defineEnvironmentalVariables({
-    NODE_ENV: JSON.stringify('production'),
+    NODE_ENV: 'production',
   }),
   parts.concatenateModulesForProduction,
   parts.setExtraPlugins([

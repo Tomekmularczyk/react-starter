@@ -165,15 +165,20 @@ exports.generateServerEjsTemplate = pathToTemplate => ({
   ],
 });
 
-exports.defineEnvironmentalVariables = variables => ({
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        ...variables,
-      },
-    }),
-  ],
-});
+exports.defineEnvironmentalVariables = (variables) => {
+  const stringifiedValues = Object
+    .entries(variables)
+    .reduce((obj, [key, val]) => {
+      obj[`process.env.${key}`] = JSON.stringify(val);
+      return obj;
+    }, {});
+
+  return {
+    plugins: [
+      new webpack.DefinePlugin(stringifiedValues),
+    ],
+  };
+};
 
 exports.setExtraPlugins = pluginsArray => ({
   plugins: pluginsArray,

@@ -21,7 +21,7 @@ const productionConfig = merge([
   parts.generateSourceMaps('source-map'),
   parts.extractVendorModules('vendor'),
   parts.defineEnvironmentalVariables({
-    NODE_ENV: JSON.stringify('production'),
+    NODE_ENV: 'production',
   }),
   parts.copy([
     { from: './static', to: './static' },
