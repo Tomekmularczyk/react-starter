@@ -1,12 +1,13 @@
 const path = require('path');
 
+const root = path.resolve(__dirname, '../');
 const PATHS = {
-  root: path.resolve(__dirname, '../'),
-  clientBundleEntry: path.resolve(__dirname, '../src/client.jsx'),
-  serverBundleEntry: path.resolve(__dirname, '../src/server.jsx'),
-  publicDirectory: path.resolve(__dirname, '../dist/public/'),
-  ejsTemplate: path.resolve(__dirname, './index.ejs'),
-  mainOutputDirectory: path.resolve(__dirname, '../dist/'),
+  root,
+  clientBundleEntry: path.join(root, 'src/client.jsx'),
+  serverBundleEntry: path.join(root, 'src/server.jsx'),
+  publicDirectory: path.join(root, 'dist/public/'),
+  ejsTemplate: path.join(root, 'config/index.ejs'),
+  mainOutputDirectory: path.join(root, 'dist/'),
 };
 
 const MODULE_ALIASES = {

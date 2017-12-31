@@ -169,13 +169,13 @@ exports.defineEnvironmentalVariables = (variables) => {
   const stringifiedValues = Object
     .entries(variables)
     .reduce((obj, [key, val]) => {
-      obj[`process.env.${key}`] = JSON.stringify(val);
+      obj[key] = JSON.stringify(val);
       return obj;
     }, {});
 
   return {
     plugins: [
-      new webpack.DefinePlugin(stringifiedValues),
+      new webpack.DefinePlugin({ 'process.env': stringifiedValues }),
     ],
   };
 };
