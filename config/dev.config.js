@@ -9,6 +9,7 @@ const devConfig = merge([
       'react-hot-loader/patch',
       'webpack/hot/only-dev-server',
       'wicg-focus-ring',
+      'babel-polyfill',
       PATHS.clientBundleEntry,
     ],
   }),

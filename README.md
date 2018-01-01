@@ -29,6 +29,6 @@
 * styled-jsx with styled-jsx-plugin-sass
 * focus-ring polyfill
 * babel
-    * babel-runtime
+    * babel-polyfill
     * supports latest EcmaScript features and stage-2 preset.
 * eslint - airbnb extension

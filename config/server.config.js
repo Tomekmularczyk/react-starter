@@ -6,7 +6,10 @@ const parts = require('./webpack.parts');
 const serverConfig = merge([
   parts.targetNode,
   parts.setEntries({
-    server: PATHS.serverBundleEntry,
+    server: [
+      'babel-polyfill',
+      PATHS.serverBundleEntry,
+    ],
   }),
   parts.setOutput(PATHS.mainOutputDirectory, true),
   parts.resolveDependencies(MODULE_ALIASES),
