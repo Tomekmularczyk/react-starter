@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
-const { PATHS, MODULE_ALIASES } = require('./env');
+const PATHS = require('./constants/paths');
+const MODULE_ALIASES = require('./constants/module_aliases');
 const parts = require('./webpack.parts');
 
 const productionConfig = merge([
