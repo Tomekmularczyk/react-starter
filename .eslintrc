@@ -7,10 +7,9 @@
   },
   "rules": {
     "no-underscore-dangle": "off",
-    "no-trailing-spaces": "off",
     "max-len": ["warn", 120],
     "no-console": "off",
-    "react/jsx-curly-brace-presence": "off",
+    "function-paren-newline": "off",
     "react/jsx-closing-tag-location": "off"
   },
   "settings": {
