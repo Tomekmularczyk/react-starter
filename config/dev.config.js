@@ -7,10 +7,10 @@ const parts = require('./webpack.parts');
 const devConfig = merge([
   parts.setEntries({
     client: [
+      'babel-polyfill',
       'react-hot-loader/patch',
       'webpack/hot/only-dev-server',
       'wicg-focus-ring',
-      'babel-polyfill',
       PATHS.clientBundleEntry,
     ],
   }),
