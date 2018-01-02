@@ -7,10 +7,9 @@ const productionConfig = merge([
   parts.setEntries({
     client: [
       'wicg-focus-ring',
-      'babel-polyfill',
       PATHS.clientBundleEntry,
     ],
-    vendor: ['react', 'react-dom', 'redux', 'babel-polyfill'],
+    vendor: ['babel-polyfill', 'react', 'react-dom', 'redux'],
   }),
   parts.setOutput(PATHS.publicDirectory, true),
   parts.cleanDirectory(PATHS.mainOutputDirectory, PATHS.root),
