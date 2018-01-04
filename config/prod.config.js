@@ -1,6 +1,5 @@
 const merge = require('webpack-merge');
 const PATHS = require('./constants/paths');
-const MODULE_ALIASES = require('./constants/module_aliases');
 const parts = require('./webpack.parts');
 
 const productionConfig = merge([
@@ -13,7 +12,7 @@ const productionConfig = merge([
   }),
   parts.setOutput(PATHS.publicDirectory, true),
   parts.cleanDirectory(PATHS.mainOutputDirectory, PATHS.root),
-  parts.resolveDependencies(MODULE_ALIASES),
+  parts.resolveDependencies(),
   parts.generateGitRevision,
   parts.loadStaticAssets('static/'),
   parts.generateServerEjsTemplate(PATHS.ejsTemplate),

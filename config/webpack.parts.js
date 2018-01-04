@@ -207,9 +207,7 @@ exports.runWebpackBundleAnalyzer = {
  ***************************************/
 exports.resolveDependencies = aliases => ({
   resolve: {
-    alias: {
-      ...aliases,
-    },
+    alias: aliases,
     extensions: ['.js', '.jsx'],
   },
 });
