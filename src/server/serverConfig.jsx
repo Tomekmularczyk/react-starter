@@ -5,8 +5,8 @@ import { flushToHTML } from 'styled-jsx/server';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { Provider } from 'react-redux';
-import configureStore from 'data/redux/index';
-import app from '../src/app/index';
+import configureStore from 'data/redux';
+import app from '../app';
 
 const server = Express();
 
@@ -42,8 +42,4 @@ server.get('*', (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 8080;
-const IP = process.env.IP || '0.0.0.0';
-server.listen(PORT, IP, () => {
-  console.log(`Production Express server running at ${IP}:${PORT}`);
-});
+export default server;
