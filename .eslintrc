@@ -14,7 +14,7 @@
   },
   "settings": {
     "import/resolver": {
-      "webpack": { "config": "./config/dev.config.js" }
+      "babel-module": {}
     },
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
