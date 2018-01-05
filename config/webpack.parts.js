@@ -93,7 +93,7 @@ exports.setOutput = (pathToDirectory, isProduction = false) => {
     output: {
       filename,
       path: pathToDirectory,
-      chunkFilename: '[name].bundle.js',
+      chunkFilename: '[name].[chunkhash].bundle.js',
       publicPath: '/',
     },
   };
