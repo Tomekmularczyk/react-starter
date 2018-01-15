@@ -6,6 +6,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const nodeExternals = require('webpack-node-externals');
 
 /****************************************
  *         D  E  V    S  E  R  V  E  R
@@ -37,13 +38,8 @@ exports.setEntries = entries => ({
 /****************************************
  *         E  X  T  E  R  N  A  L  S
  ***************************************/
-exports.skipExternalLibrariesForServerBundle = {
-  externals: fs.readdirSync('./node_modules').concat([
-    'react-dom/server',
-  ]).reduce((ext, mod) => {
-    ext[mod] = `commonjs ${mod}`;
-    return ext;
-  }, {}),
+exports.skipNodeModulesOnServer = {
+  externals: [nodeExternals()],
 };
 
 /****************************************
