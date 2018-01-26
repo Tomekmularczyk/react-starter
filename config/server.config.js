@@ -4,7 +4,7 @@ const PATHS = require('./constants/paths');
 const parts = require('./webpack.parts');
 
 const serverConfig = merge([
-  parts.targetNode,
+  parts.targetNode(),
   parts.setEntries({
     server: [
       'babel-polyfill',
@@ -13,15 +13,15 @@ const serverConfig = merge([
   }),
   parts.setOutput(PATHS.mainOutputDirectory, true),
   parts.resolveDependencies(),
-  parts.transpileJavaScript,
+  parts.transpileJavaScript(),
   parts.loadStaticAssets('static/'),
   parts.generateSourceMaps('source-map'),
-  parts.skipNodeModulesOnServer,
-  parts.generateGitRevision,
+  parts.skipNodeModulesOnServer(),
+  parts.generateGitRevision(),
   parts.defineEnvironmentalVariables({
     NODE_ENV: 'production',
   }),
-  parts.concatenateModulesForProduction,
+  parts.concatenateModulesForProduction(),
   parts.setExtraPlugins([
     new webpack.NamedModulesPlugin(),
   ]),

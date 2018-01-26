@@ -11,7 +11,7 @@ const nodeExternals = require('webpack-node-externals');
 /****************************************
  *         D  E  V    S  E  R  V  E  R
  ***************************************/
-exports.setDevServer = {
+exports.setDevServer = () => ({
   devServer: {
     compress: true,
     hot: true,
@@ -19,7 +19,7 @@ exports.setDevServer = {
     disableHostCheck: true,
     host: '127.0.0.1',
   },
-};
+});
 
 /****************************************
  *         D  E  V  T  O  O  L
@@ -38,14 +38,14 @@ exports.setEntries = entries => ({
 /****************************************
  *         E  X  T  E  R  N  A  L  S
  ***************************************/
-exports.skipNodeModulesOnServer = {
+exports.skipNodeModulesOnServer = () => ({
   externals: [nodeExternals()],
-};
+});
 
 /****************************************
  *         M  O  D  U  L  E
  ***************************************/
-exports.transpileJavaScript = {
+exports.transpileJavaScript = () => ({
   module: {
     rules: [
       {
@@ -60,7 +60,7 @@ exports.transpileJavaScript = {
       },
     ],
   },
-};
+});
 
 exports.loadStaticAssets = relativePath => ({
   module: {
@@ -104,13 +104,13 @@ exports.cleanDirectory = (directory, projectRoot) => ({
   ],
 });
 
-exports.generateGitRevision = {
+exports.generateGitRevision = () => ({
   plugins: [
     new GitRevisionPlugin(),
   ],
-};
+});
 
-exports.minifyJavaScript = {
+exports.minifyJavaScript = () => ({
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
@@ -122,7 +122,7 @@ exports.minifyJavaScript = {
       },
     }),
   ],
-};
+});
 
 // based on https://webpack.js.org/guides/caching/
 exports.extractVendorModules = entryName => ({
@@ -186,17 +186,17 @@ exports.copy = mappingsArray => ({
   ],
 });
 
-exports.concatenateModulesForProduction = {
+exports.concatenateModulesForProduction = () => ({
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
   ],
-};
+});
 
-exports.runWebpackBundleAnalyzer = {
+exports.runWebpackBundleAnalyzer = () => ({
   plugins: [
     new BundleAnalyzerPlugin(),
   ],
-};
+});
 
 /****************************************
  *         R  E  S  O  L  V  E
@@ -211,10 +211,10 @@ exports.resolveDependencies = aliases => ({
 /****************************************
  *         T  A  R  G  E  T
  ***************************************/
-exports.targetNode = {
+exports.targetNode = () => ({
   target: 'node',
   node: {
     __filename: false,
     __dirname: false,
   },
-};
+});

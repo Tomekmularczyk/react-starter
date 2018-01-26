@@ -13,11 +13,11 @@ const productionConfig = merge([
   parts.setOutput(PATHS.publicDirectory, true),
   parts.cleanDirectory(PATHS.mainOutputDirectory, PATHS.root),
   parts.resolveDependencies(),
-  parts.generateGitRevision,
+  parts.generateGitRevision(),
   parts.loadStaticAssets('static/'),
   parts.generateServerEjsTemplate(PATHS.ejsTemplate),
-  parts.transpileJavaScript,
-  parts.minifyJavaScript,
+  parts.transpileJavaScript(),
+  parts.minifyJavaScript(),
   parts.generateSourceMaps('source-map'),
   parts.extractVendorModules('vendor'),
   parts.defineEnvironmentalVariables({
@@ -26,7 +26,7 @@ const productionConfig = merge([
   parts.copy([
     { from: './static', to: './static' },
   ]),
-  parts.concatenateModulesForProduction,
+  parts.concatenateModulesForProduction(),
 ]);
 
 module.exports = productionConfig;
