@@ -43,8 +43,7 @@ server.get('*', (req, res) => {
 });
 
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-  const styles = flushToHTML();
-  res.status(200).render('index', { html: null, styles, preloadedState: null });
+  res.status(200).render('index', { html: null, styles: null, preloadedState: null });
 });
 
 export default server;
