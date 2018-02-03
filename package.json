@@ -25,7 +25,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "styled-jsx": "^2.2.2",
+    "styled-jsx": "^2.2.3",
     "wicg-focus-ring": "^3.0.2"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.18",
-    "eslint": "^4.16.0",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-plugin-import": "^2.8.0",
@@ -50,7 +50,7 @@
     "styled-jsx-plugin-sass": "^0.2.2",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
-    "webpack-bundle-analyzer": "^2.9.2",
+    "webpack-bundle-analyzer": "^2.10.0",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1",
     "webpack-node-externals": "^1.6.0"
