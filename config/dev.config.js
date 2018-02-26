@@ -18,7 +18,6 @@ const devConfig = merge([
   parts.resolveDependencies(),
   parts.setDevServer(),
   parts.transpileJavaScript(),
-  parts.generateSourceMaps('cheap-module-eval-source-map'),
   parts.loadStaticAssets('static/'),
   parts.generateDevHTML(PATHS.ejsTemplate),
   parts.setExtraPlugins([
