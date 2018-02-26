@@ -121,22 +121,6 @@ exports.generateGitRevision = () => ({
   ],
 });
 
-// based on https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693
-exports.extractVendorModules = modulesMatcher => ({
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: modulesMatcher,
-          chunks: 'initial',
-          name: 'vendor',
-          enforce: true,
-        },
-      },
-    },
-  },
-});
-
 exports.generateDevHTML = pathToTemplate => ({
   plugins: [
     new HTMLWebpackPlugin({

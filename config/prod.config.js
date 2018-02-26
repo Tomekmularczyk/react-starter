@@ -10,7 +10,6 @@ const productionConfig = merge([
       PATHS.clientBundleEntry,
     ],
   }),
-  parts.extractVendorModules(/babel-polyfill|react|react-dom|redux/),
   parts.setOutput(PATHS.publicDirectory, true),
   parts.cleanDirectory(PATHS.mainOutputDirectory, PATHS.root),
   parts.resolveDependencies(),
@@ -18,9 +17,6 @@ const productionConfig = merge([
   parts.loadStaticAssets('static/'),
   parts.generateServerEjsTemplate(PATHS.ejsTemplate),
   parts.transpileJavaScript(),
-  parts.defineEnvironmentalVariables({
-    NODE_ENV: 'production',
-  }),
   parts.copy([
     { from: './static', to: './static' },
   ]),
