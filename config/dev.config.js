@@ -4,6 +4,7 @@ const PATHS = require('./constants/paths');
 const parts = require('./webpack.parts');
 
 const devConfig = merge([
+  parts.setDevMode(),
   parts.setEntries({
     client: [
       'babel-polyfill',
@@ -21,7 +22,6 @@ const devConfig = merge([
   parts.loadStaticAssets('static/'),
   parts.generateDevHTML(PATHS.ejsTemplate),
   parts.setExtraPlugins([
-    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ]),
 ]);

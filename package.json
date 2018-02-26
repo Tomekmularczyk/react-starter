@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack.run.js --progress --env.development",
-    "build:prod": "webpack --config config/webpack.run.js --progress --env.production",
+    "build:client": "webpack --config config/webpack.run.js --progress --env.production",
     "build:server": "webpack --config config/webpack.run.js --progress --env.server",
-    "build": "npm run build:prod && npm run build:server",
+    "build": "npm run build:client && npm run build:server",
     "start": "node dist/server.*.bundle.js",
     "debug-ssr": "node --inspect dist/server.*.bundle.js",
     "lint": "eslint src/ --ext .js --ext .jsx"
@@ -45,13 +45,14 @@
     "eslint-plugin-react": "^7.7.0",
     "file-loader": "^1.1.9",
     "git-revision-webpack-plugin": "^2.5.1",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "node-sass": "^4.7.2",
     "styled-jsx-plugin-sass": "^0.2.3",
     "url-loader": "^0.6.2",
-    "webpack": "^3.11.0",
+    "webpack": "^4.0.0",
     "webpack-bundle-analyzer": "^2.11.0",
-    "webpack-dev-server": "^2.11.1",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.0.0",
     "webpack-merge": "^4.1.2",
     "webpack-node-externals": "^1.6.0"
   }

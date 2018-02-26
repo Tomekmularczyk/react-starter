@@ -32,3 +32,7 @@
     * babel-polyfill
     * supports latest EcmaScript features and stage-2 preset.
 * eslint - airbnb extension
+
+### CAVEATS:
+use webpack-contrib/html-webpack-plugin until [original](https://github.com/jantimon/html-webpack-plugin) will get
+migrated to webpack4. More [info here.](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4).

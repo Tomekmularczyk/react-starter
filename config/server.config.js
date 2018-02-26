@@ -4,6 +4,7 @@ const PATHS = require('./constants/paths');
 const parts = require('./webpack.parts');
 
 const serverConfig = merge([
+  parts.setProductionMode(),
   parts.targetNode(),
   parts.setEntries({
     server: [
@@ -18,10 +19,6 @@ const serverConfig = merge([
   parts.generateSourceMaps('source-map'),
   parts.skipNodeModulesOnServer(),
   parts.generateGitRevision(),
-  parts.defineEnvironmentalVariables({
-    NODE_ENV: 'production',
-  }),
-  parts.concatenateModulesForProduction(),
   parts.setExtraPlugins([
     new webpack.NamedModulesPlugin(),
   ]),

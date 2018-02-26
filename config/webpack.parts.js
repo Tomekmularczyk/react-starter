@@ -43,6 +43,17 @@ exports.skipNodeModulesOnServer = () => ({
 });
 
 /****************************************
+ *         M O D E
+ ***************************************/
+exports.setDevMode = () => ({
+  mode: 'development',
+});
+
+exports.setProductionMode = () => ({
+  mode: 'production',
+});
+
+/****************************************
  *         M  O  D  U  L  E
  ***************************************/
 exports.transpileJavaScript = () => ({
@@ -84,12 +95,12 @@ exports.loadStaticAssets = relativePath => ({
  ***************************************/
 exports.setOutput = (pathToDirectory, isProduction = false) => {
   // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
-  const filename = isProduction ? '[name].[chunkhash].bundle.js' : '[name].bundle.js';
+  const filename = isProduction ? '[name].[chunkhash:8].bundle.js' : '[name].bundle.js';
   return {
     output: {
       filename,
       path: pathToDirectory,
-      chunkFilename: '[name].[chunkhash].bundle.js',
+      chunkFilename: '[name].[chunkhash:8].bundle.js',
       publicPath: '/',
     },
   };
@@ -110,31 +121,20 @@ exports.generateGitRevision = () => ({
   ],
 });
 
-exports.minifyJavaScript = () => ({
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      comments: false,
-      sourceMap: true,
-      parallel: true,
-      compress: {
-        warnings: false,
-        drop_console: true,
+// based on https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693
+exports.extractVendorModules = modulesMatcher => ({
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: modulesMatcher,
+          chunks: 'initial',
+          name: 'vendor',
+          enforce: true,
+        },
       },
-    }),
-  ],
-});
-
-// based on https://webpack.js.org/guides/caching/
-exports.extractVendorModules = entryName => ({
-  plugins: [
-    new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: entryName,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'runtime',
-    }),
-  ],
+    },
+  },
 });
 
 exports.generateDevHTML = pathToTemplate => ({
@@ -183,12 +183,6 @@ exports.setExtraPlugins = pluginsArray => ({
 exports.copy = mappingsArray => ({
   plugins: [
     new CopyWebpackPlugin(mappingsArray),
-  ],
-});
-
-exports.concatenateModulesForProduction = () => ({
-  plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
   ],
 });
 
