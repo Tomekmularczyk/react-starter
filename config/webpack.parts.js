@@ -106,6 +106,25 @@ exports.setOutput = (pathToDirectory, isProduction = false) => {
   };
 };
 
+/************************************************
+ *         O P T I M I Z A T I O N
+ ************************************************/
+exports.createVendorChunk = entryName => ({
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          name: entryName,
+          test: entryName,
+          enforce: true,
+        },
+      },
+    },
+    runtimeChunk: true,
+  },
+});
+
 /****************************************
  *         P  L  U  G  I  N  S
  ***************************************/
