@@ -13,7 +13,8 @@ const Page404 = ({ location }) => (
           background-color: ${colors.primary};
         }
       }
-    `}</style>
+    `}
+    </style>
   </div>
 );
 

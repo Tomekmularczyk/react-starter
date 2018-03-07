@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 import Page404 from './pages/Page404';
 import IndexPage from './pages';
 
-export default (
-  <span>
+const App = () => (
+  <Fragment>
     <Switch>
       <Route exact path="/" component={IndexPage} />
       <Route component={Page404} />
@@ -19,6 +20,9 @@ export default (
       .js-focus-ring *:focus:not(.focus-ring) {
         outline-width: 0;
       }
-    `}</style>
-  </span>
+    `}
+    </style>
+  </Fragment>
 );
+
+export default hot(module)(App);

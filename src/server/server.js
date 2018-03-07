@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import server from './serverConfig';
 
 const PORT = process.env.PORT || 8080;
