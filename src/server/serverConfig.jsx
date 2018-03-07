@@ -6,7 +6,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from 'data/redux';
-import App from '../app';
+import App from '../pages';
 
 const server = Express();
 

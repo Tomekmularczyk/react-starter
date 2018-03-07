@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import Page404 from './pages/Page404';
-import IndexPage from './pages';
+import Page404 from './Page404/Page404';
+import IndexPage from './IndexPage/IndexPage';
 
 const App = () => (
   <Fragment>
