@@ -9,7 +9,7 @@ const serverConfig = merge([
   parts.targetNode(),
   parts.setEntries({
     server: [
-      'babel-polyfill',
+      '@babel/polyfill',
       PATHS.serverBundleEntry,
     ],
   }),

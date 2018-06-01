@@ -8,7 +8,7 @@ const devConfig = merge([
   parts.setDevMode(),
   parts.setEntries({
     client: [
-      'babel-polyfill',
+      '@babel/polyfill',
       'wicg-focus-ring',
       PATHS.clientBundleEntry,
     ],

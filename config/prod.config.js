@@ -7,7 +7,7 @@ const productionConfig = merge([
   parts.setProductionMode(),
   parts.setEntries({
     client: [
-      'babel-polyfill',
+      '@babel/polyfill',
       'wicg-focus-ring',
       PATHS.clientBundleEntry,
     ],
