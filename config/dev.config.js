@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const PATHS = require('./constants/paths');
@@ -8,8 +9,6 @@ const devConfig = merge([
   parts.setEntries({
     client: [
       'babel-polyfill',
-      'react-hot-loader/patch',
-      'webpack/hot/only-dev-server',
       'wicg-focus-ring',
       PATHS.clientBundleEntry,
     ],

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const devConfig = require('./dev.config');
 const prodConfig = require('./prod.config');
 const serverConfig = require('./server.config');

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const merge = require('webpack-merge');
 const PATHS = require('./constants/paths');
 const parts = require('./webpack.parts');
@@ -6,6 +7,7 @@ const productionConfig = merge([
   parts.setProductionMode(),
   parts.setEntries({
     client: [
+      'babel-polyfill',
       'wicg-focus-ring',
       PATHS.clientBundleEntry,
     ],
