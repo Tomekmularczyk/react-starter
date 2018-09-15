@@ -31,5 +31,5 @@
 * babel
     * babel-polyfill
     * supports latest EcmaScript features and stage-2 preset.
-* eslint - airbnb extension
+* eslint - airbnb + Prettier
 

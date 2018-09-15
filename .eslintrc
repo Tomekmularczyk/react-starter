@@ -1,20 +1,15 @@
 {
-  "extends": ["airbnb"],
+  "extends": [
+    "airbnb", 
+    "plugin:prettier/recommended"
+  ],
   "parser": "babel-eslint",
   "env": {
-    "browser": true,
-    "node": true
-  },
-  "rules": {
-    "no-underscore-dangle": "off",
-    "max-len": ["warn", 120]
+    "browser": true
   },
   "settings": {
     "import/resolver": {
       "babel-module": {}
-    },
-    "flowtype": {
-      "onlyFilesWithFlowAnnotation": true
     }
   }
 }

@@ -1,11 +1,11 @@
 /* eslint-disable spaced-comment, import/no-extraneous-dependencies */
-const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const GitRevisionPlugin = require('git-revision-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const nodeExternals = require('webpack-node-externals');
+const webpack = require("webpack");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const GitRevisionPlugin = require("git-revision-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const nodeExternals = require("webpack-node-externals");
 
 /****************************************
  *         D  E  V    S  E  R  V  E  R
@@ -16,40 +16,40 @@ exports.setDevServer = () => ({
     hot: true,
     historyApiFallback: true,
     disableHostCheck: true,
-    host: '127.0.0.1',
-  },
+    host: "127.0.0.1"
+  }
 });
 
 /****************************************
  *         D  E  V  T  O  O  L
  ***************************************/
 exports.generateSourceMaps = type => ({
-  devtool: type,
+  devtool: type
 });
 
 /****************************************
  *         E  N  T  R  Y
  ***************************************/
 exports.setEntries = entries => ({
-  entry: { ...entries },
+  entry: { ...entries }
 });
 
 /****************************************
  *         E  X  T  E  R  N  A  L  S
  ***************************************/
 exports.skipNodeModulesOnServer = () => ({
-  externals: [nodeExternals()],
+  externals: [nodeExternals()]
 });
 
 /****************************************
  *         M O D E
  ***************************************/
 exports.setDevMode = () => ({
-  mode: 'development',
+  mode: "development"
 });
 
 exports.setProductionMode = () => ({
-  mode: 'production',
+  mode: "production"
 });
 
 /****************************************
@@ -62,14 +62,14 @@ exports.transpileJavaScript = () => ({
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            cacheDirectory: true,
-          },
-        },
-      },
-    ],
-  },
+            cacheDirectory: true
+          }
+        }
+      }
+    ]
+  }
 });
 
 exports.loadStaticAssets = relativePath => ({
@@ -78,15 +78,15 @@ exports.loadStaticAssets = relativePath => ({
       {
         test: /\.(ttf|eot|woff|woff2|jpg|jpeg|png|svg)$/,
         use: {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 8000,
-            name: `${relativePath}[name].[hash].[ext]`,
-          },
-        },
-      },
-    ],
-  },
+            name: `${relativePath}[name].[hash].[ext]`
+          }
+        }
+      }
+    ]
+  }
 });
 
 /****************************************
@@ -94,14 +94,16 @@ exports.loadStaticAssets = relativePath => ({
  ***************************************/
 exports.setOutput = (pathToDirectory, isProduction = false) => {
   // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
-  const filename = isProduction ? '[name].[chunkhash:8].bundle.js' : '[name].bundle.js';
+  const filename = isProduction
+    ? "[name].[chunkhash:8].bundle.js"
+    : "[name].bundle.js";
   return {
     output: {
       filename,
       path: pathToDirectory,
-      chunkFilename: '[name].[chunkhash:8].bundle.js',
-      publicPath: '/',
-    },
+      chunkFilename: "[name].[chunkhash:8].bundle.js",
+      publicPath: "/"
+    }
   };
 };
 
@@ -113,15 +115,15 @@ exports.createVendorChunk = entryName => ({
     splitChunks: {
       cacheGroups: {
         vendor: {
-          chunks: 'initial',
+          chunks: "initial",
           name: entryName,
           test: entryName,
-          enforce: true,
-        },
-      },
+          enforce: true
+        }
+      }
     },
-    runtimeChunk: true,
-  },
+    runtimeChunk: true
+  }
 });
 
 /****************************************
@@ -129,70 +131,63 @@ exports.createVendorChunk = entryName => ({
  ***************************************/
 exports.cleanDirectory = (directory, projectRoot) => ({
   plugins: [
-    new CleanWebpackPlugin([directory], { root: projectRoot, verbose: true }),
-  ],
+    new CleanWebpackPlugin([directory], { root: projectRoot, verbose: true })
+  ]
 });
 
 exports.generateGitRevision = () => ({
-  plugins: [
-    new GitRevisionPlugin(),
-  ],
+  plugins: [new GitRevisionPlugin()]
 });
 
 exports.generateDevHTML = pathToTemplate => ({
   plugins: [
     new HTMLWebpackPlugin({
       template: pathToTemplate,
-      filename: 'index.html',
-      inject: 'body',
-    }),
-  ],
+      filename: "index.html",
+      inject: "body"
+    })
+  ]
 });
 
 exports.generateServerEjsTemplate = pathToTemplate => ({
   plugins: [
     new HTMLWebpackPlugin({
       template: pathToTemplate,
-      filename: 'index.ejs',
-      inject: 'body',
+      filename: "index.ejs",
+      inject: "body",
       production: true, //  render placeholders for ssr
       minify: {
-        removeComments: true,
-      },
-    }),
-  ],
+        removeComments: true
+      }
+    })
+  ]
 });
 
-exports.defineEnvironmentalVariables = (variables) => {
-  const stringifiedValues = Object
-    .entries(variables)
-    .reduce((obj, [key, val]) => {
+exports.defineEnvironmentalVariables = variables => {
+  const stringifiedValues = Object.entries(variables).reduce(
+    (obj, [key, val]) => {
       // eslint-disable-next-line no-param-reassign
       obj[key] = JSON.stringify(val);
       return obj;
-    }, {});
+    },
+    {}
+  );
 
   return {
-    plugins: [
-      new webpack.DefinePlugin({ 'process.env': stringifiedValues }),
-    ],
+    plugins: [new webpack.DefinePlugin({ "process.env": stringifiedValues })]
   };
 };
 
 exports.setExtraPlugins = pluginsArray => ({
-  plugins: pluginsArray,
+  plugins: pluginsArray
 });
 
 exports.copy = mappingsArray => ({
-  plugins: [
-    new CopyWebpackPlugin(mappingsArray),
-  ],
+  plugins: [new CopyWebpackPlugin(mappingsArray)]
 });
 
 exports.runWebpackBundleAnalyzer = () => ({
-  plugins: [
-    new BundleAnalyzerPlugin(),
-  ],
+  plugins: [new BundleAnalyzerPlugin()]
 });
 
 /****************************************
@@ -201,17 +196,17 @@ exports.runWebpackBundleAnalyzer = () => ({
 exports.resolveDependencies = aliases => ({
   resolve: {
     alias: aliases,
-    extensions: ['.js', '.jsx'],
-  },
+    extensions: [".js", ".jsx"]
+  }
 });
 
 /****************************************
  *         T  A  R  G  E  T
  ***************************************/
 exports.targetNode = () => ({
-  target: 'node',
+  target: "node",
   node: {
     __filename: false,
-    __dirname: false,
-  },
+    __dirname: false
+  }
 });

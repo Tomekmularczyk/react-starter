@@ -1,6 +1,6 @@
-import React from 'react';
-import Types from 'prop-types';
-import { colors } from 'data/theme';
+import React from "react";
+import Types from "prop-types";
+import { colors } from "data/theme";
 
 const Page404 = ({ location }) => (
   <div className="Page404">
@@ -10,22 +10,22 @@ const Page404 = ({ location }) => (
     </h3>
     <style jsx>
       {`
-      .Page404 {
-        display: flex;
+        .Page404 {
+          display: flex;
 
-        h3 {
-          background-color: ${colors.primary};
+          h3 {
+            background-color: ${colors.primary};
+          }
         }
-      }
-    `}
+      `}
     </style>
   </div>
 );
 
 Page404.propTypes = {
   location: Types.shape({
-    pathname: Types.string,
-  }).isRequired,
+    pathname: Types.string
+  }).isRequired
 };
 
 export default Page404;
