@@ -1,4 +1,4 @@
-# README #
+# react-starter #
 
 1. Clone the repo.
 2. Remove existing (`rm -rf .git`) and initialize new git repo (`git init`).
@@ -22,7 +22,7 @@
 
 ### Technology stack: ###
 * Yarn for managing dependencies
-* React and Redux
+* Redux and redux-devtools-extension
 * React-Router v4
 * WebpackDevServer | HotModuleReplacements
 * Express and EJS templates for server-side rendering 
