@@ -21,9 +21,8 @@
 * `yarn lint` - check for eslint errors
 
 ### Technology stack: ###
-* Yarn for managing dependencies
 * Redux and redux-devtools-extension
-* React-Router v4
+* Reach/router
 * WebpackDevServer | HotModuleReplacements
 * Express and EJS templates for server-side rendering 
 * styled-components

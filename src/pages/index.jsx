@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Router } from "@reach/router";
 import { hot } from "react-hot-loader";
 import { injectGlobal } from "styled-components";
-import Page404 from "./Page404/Page404";
-import IndexPage from "./IndexPage/IndexPage";
+import Page404 from "./Page404";
+import IndexPage from "./IndexPage";
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -19,10 +19,10 @@ injectGlobal`
 `;
 
 const App = () => (
-  <Switch>
-    <Route exact path="/" component={IndexPage} />
-    <Route component={Page404} />
-  </Switch>
+  <Router>
+    <IndexPage path="/" />
+    <Page404 default />
+  </Router>
 );
 
 export default hot(module)(App);
