@@ -10,7 +10,8 @@ const App = () => (
       <Route exact path="/" component={IndexPage} />
       <Route component={Page404} />
     </Switch>
-    <style jsx global>{`
+    <style jsx global>
+      {`
       body {
         margin: 0;
         padding: 0;

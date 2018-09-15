@@ -7,7 +7,8 @@ const IndexPage = () => (
       <img src={logo} className="logo" alt="logo" />
       <h2>Yeah, React!</h2>
     </div>
-    <style jsx>{`
+    <style jsx>
+      {`
       .IndexPage {
         text-align: center;
 
