@@ -5,5 +5,4 @@ server.bundle.js
 server.bundle.js.map
 .idea/
 .DS_Store
-package-lock.json
 yarn-error.log
