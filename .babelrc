@@ -10,7 +10,6 @@
         "services": "./services"
       }
     }],
-    ["styled-jsx/babel", { "plugins": ["styled-jsx-plugin-sass"] }],
     "react-hot-loader/babel"
   ]
 }

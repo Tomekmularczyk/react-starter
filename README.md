@@ -26,10 +26,8 @@
 * React-Router v4
 * WebpackDevServer | HotModuleReplacements
 * Express and EJS templates for server-side rendering 
-* styled-jsx with styled-jsx-plugin-sass
+* styled-components
 * focus-ring polyfill
-* babel
-    * @babel/polyfill
-    * @babel/preset-env
+* @babel/polyfill, @babel/preset-env, @babel/preset-react
 * eslint - airbnb + Prettier
 

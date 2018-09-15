@@ -1,7 +1,7 @@
 import path from "path";
 import Express from "express";
 import React from "react";
-import { flushToHTML } from "styled-jsx/server";
+import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
 import { Provider } from "react-redux";
@@ -21,16 +21,19 @@ server.get("*", (req, res) => {
   const store = configureStore();
 
   const context = {};
+  const sheet = new ServerStyleSheet();
   const reactApp = (
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
-        <App />
+        <StyleSheetManager sheet={sheet.instance}>
+          <App />
+        </StyleSheetManager>
       </StaticRouter>
     </Provider>
   );
 
   const html = renderToString(reactApp);
-  const styles = flushToHTML();
+  const styles = sheet.getStyleTags();
   const preloadedState = JSON.stringify(store.getState()).replace(
     /</g,
     "\\u003c"

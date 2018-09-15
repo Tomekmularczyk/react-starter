@@ -1,25 +1,23 @@
 import React from "react";
 import Types from "prop-types";
+import styled from "styled-components";
 import { colors } from "services/theme";
 
+const Container = styled.section`
+  display: flex;
+`;
+
+const H3 = styled.h3`
+  background-color: ${colors.primary};
+`;
+
 const Page404 = ({ location }) => (
-  <div className="Page404">
-    <h3>
+  <Container>
+    <H3>
       No match for
       <code>{location.pathname}</code>
-    </h3>
-    <style jsx>
-      {`
-        .Page404 {
-          display: flex;
-
-          h3 {
-            background-color: ${colors.primary};
-          }
-        }
-      `}
-    </style>
-  </div>
+    </H3>
+  </Container>
 );
 
 Page404.propTypes = {
