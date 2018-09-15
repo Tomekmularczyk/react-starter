@@ -18,7 +18,7 @@
 
 #### Other handy commands
 * `yarn debug-ssr` - debug (built) project with chrome-dev-tools
-* `yarn lint` - check `src` directory for eslint errors
+* `yarn lint` - check for eslint errors
 
 ### Technology stack: ###
 * Yarn for managing dependencies
@@ -29,7 +29,7 @@
 * styled-jsx with styled-jsx-plugin-sass
 * focus-ring polyfill
 * babel
-    * babel-polyfill
-    * supports latest EcmaScript features and stage-2 preset.
+    * @babel/polyfill
+    * @babel/preset-env
 * eslint - airbnb + Prettier
 

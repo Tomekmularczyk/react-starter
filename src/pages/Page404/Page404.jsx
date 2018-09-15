@@ -1,6 +1,6 @@
 import React from "react";
 import Types from "prop-types";
-import { colors } from "data/theme";
+import { colors } from "services/theme";
 
 const Page404 = ({ location }) => (
   <div className="Page404">

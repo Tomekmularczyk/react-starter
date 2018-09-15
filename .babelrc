@@ -7,7 +7,7 @@
     ["module-resolver", {
       "alias": {
         "static": "./static",
-        "data": "./src/data"
+        "services": "./services"
       }
     }],
     ["styled-jsx/babel", { "plugins": ["styled-jsx-plugin-sass"] }],

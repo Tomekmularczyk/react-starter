@@ -1,7 +1,7 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, global-require */
 import { applyMiddleware, createStore } from "redux";
 import { createLogger } from "redux-logger";
-import reducers from "./reducers";
+import rootReducer from "./rootReducer";
 
 /**
  * if production environment we want to preload redux state (on client) to state provided by server.
@@ -14,12 +14,12 @@ function createState(middleware) {
     delete window.__PRELOADED_STATE__;
 
     return createStore(
-      reducers,
+      rootReducer,
       preloadedState,
       applyMiddleware(...middleware)
     );
   }
-  return createStore(reducers, applyMiddleware(...middleware));
+  return createStore(rootReducer, applyMiddleware(...middleware));
 }
 
 export default function configureStore() {
@@ -31,8 +31,8 @@ export default function configureStore() {
 
   //  Enable Webpack hot module replacement for reducers
   if (module.hot) {
-    module.hot.accept("./reducers", () => {
-      const nextRootReducer = require('./reducers'); // eslint-disable-line
+    module.hot.accept("./rootReducer", () => {
+      const nextRootReducer = require("./rootReducer");
       store.replaceReducer(nextRootReducer);
     });
   }
