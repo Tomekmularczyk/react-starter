@@ -4,20 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack.run.js --progress --env.development",
-    "build:client": "webpack --config config/webpack.run.js --progress --env.production",
-    "build:server": "webpack --config config/webpack.run.js --progress --env.server",
-    "build": "npm run build:client && npm run build:server",
-    "start": "NODE_ENV=production node dist/server.*.bundle.js",
-    "debug-ssr": "node --inspect dist/server.*.bundle.js",
+    "build": "webpack --config config/webpack.run.js --progress --env.production",
+    "serve": "npx serve dist/",
     "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "@reach/router": "^1.1.1",
     "copy-webpack-plugin": "^4.5.2",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
-    "prop-types": "^15.6.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-hot-loader": "^4.3.7",
@@ -52,7 +46,6 @@
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",
-    "webpack-merge": "^4.1.4",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-merge": "^4.1.4"
   }
 }

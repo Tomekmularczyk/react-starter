@@ -5,7 +5,9 @@ import configureStore from "services/redux/store";
 import App from "./pages";
 
 const store = configureStore();
-ReactDOM.hydrate(
+
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+renderMethod(
   <Provider store={store}>
     <App />
   </Provider>,

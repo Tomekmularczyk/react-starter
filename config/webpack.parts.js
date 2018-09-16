@@ -5,7 +5,6 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const nodeExternals = require("webpack-node-externals");
 
 /****************************************
  *         D  E  V    S  E  R  V  E  R
@@ -32,13 +31,6 @@ exports.generateSourceMaps = type => ({
  ***************************************/
 exports.setEntries = entries => ({
   entry: { ...entries }
-});
-
-/****************************************
- *         E  X  T  E  R  N  A  L  S
- ***************************************/
-exports.skipNodeModulesOnServer = () => ({
-  externals: [nodeExternals()]
 });
 
 /****************************************
@@ -92,11 +84,12 @@ exports.loadStaticAssets = relativePath => ({
 /****************************************
  *         O  U  T  P  U  T
  ***************************************/
-exports.setOutput = (pathToDirectory, isProduction = false) => {
+exports.setOutput = pathToDirectory => {
   // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
-  const filename = isProduction
-    ? "[name].[chunkhash:8].bundle.js"
-    : "[name].bundle.js";
+  const filename =
+    process.env.NODE_ENV === "production"
+      ? "[name].[chunkhash:8].bundle.js"
+      : "[name].bundle.js";
   return {
     output: {
       filename,
@@ -139,26 +132,12 @@ exports.generateGitRevision = () => ({
   plugins: [new GitRevisionPlugin()]
 });
 
-exports.generateDevHTML = pathToTemplate => ({
+exports.useHTMLTemplate = pathToTemplate => ({
   plugins: [
     new HTMLWebpackPlugin({
       template: pathToTemplate,
       filename: "index.html",
       inject: "body"
-    })
-  ]
-});
-
-exports.generateServerEjsTemplate = pathToTemplate => ({
-  plugins: [
-    new HTMLWebpackPlugin({
-      template: pathToTemplate,
-      filename: "index.ejs",
-      inject: "body",
-      production: true, //  render placeholders for ssr
-      minify: {
-        removeComments: true
-      }
     })
   ]
 });
@@ -197,16 +176,5 @@ exports.resolveDependencies = aliases => ({
   resolve: {
     alias: aliases,
     extensions: [".js", ".jsx"]
-  }
-});
-
-/****************************************
- *         T  A  R  G  E  T
- ***************************************/
-exports.targetNode = () => ({
-  target: "node",
-  node: {
-    __filename: false,
-    __dirname: false
   }
 });

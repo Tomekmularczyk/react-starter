@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const PATHS = require("./constants/paths");
+const PATHS = require("./paths");
 const parts = require("./webpack.parts");
 
 const devConfig = merge([
@@ -9,12 +9,12 @@ const devConfig = merge([
   parts.setEntries({
     client: ["@babel/polyfill", "wicg-focus-ring", PATHS.clientBundleEntry]
   }),
-  parts.setOutput(PATHS.publicDirectory),
+  parts.setOutput(PATHS.mainOutputDirectory),
   parts.resolveDependencies(),
   parts.setDevServer(),
   parts.transpileJavaScript(),
   parts.loadStaticAssets("static/"),
-  parts.generateDevHTML(PATHS.ejsTemplate),
+  parts.useHTMLTemplate(PATHS.htmlTemplate),
   parts.setExtraPlugins([new webpack.HotModuleReplacementPlugin()])
 ]);
 

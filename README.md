@@ -6,25 +6,22 @@
 
 ### Quick summary: ###
 
-* Project is already configured for development and production use (server-sider rendering).
-* Code used for server side-rendering is not minified so its possible to debug ssr with Chrome-Node Dev-Tools.
+* Project is configured for client only development (for server-side-rendering solution go to [master](https://github.com/Tomekmularczyk/react-starter/tree/master) branch).
 * Production bundle gets minified and split out with vendor dependencies.
 
 #### Run the project:
 * `yarn` - install dependencies
 * `yarn dev` - start in development mode
-* `yarn build` - build project to /dist directory,
-* `yarn start` - run server bundle,
+* `yarn build` - build the project,
+* `yarn serve` - serve the builded project,
 
-#### Other handy commands
-* `yarn debug-ssr` - debug (built) project with chrome-dev-tools
+#### Test
 * `yarn lint` - check for eslint errors
 
 ### Technology stack: ###
 * [Redux](https://redux.js.org/) and [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
 * [@Reach/router](https://reach.tech/router)
 * [Webpack](https://webpack.js.org/) with [react-hot-loader](http://gaearon.github.io/react-hot-loader/)
-* [Express](https://expressjs.com/) with [EJS](http://ejs.co/) templates for server-side rendering 
 * [styled-components](https://www.styled-components.com/)
 * [focus-ring](https://github.com/WICG/focus-visible) polyfill
 * [Babel](https://babeljs.io/) with @babel/polyfill, @babel/preset-env and @babel/preset-react
