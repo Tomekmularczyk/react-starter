@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Location, Link } from "@reach/router";
-import { colors } from "services/theme";
 
 const H3 = styled.h3`
-  background-color: ${colors.primary};
+  background-color: red;
 `;
 
 const Page404 = () => (
