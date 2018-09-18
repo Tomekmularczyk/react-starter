@@ -1,6 +1,6 @@
+import { Link, Location } from "@reach/router";
 import React from "react";
 import styled from "styled-components";
-import { Location, Link } from "@reach/router";
 
 const H3 = styled.h3`
   background-color: red;

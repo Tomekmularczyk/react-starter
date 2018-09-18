@@ -1,4 +1,4 @@
-# react-starter [![Prettier][prettier]][prettier] #
+# react-starter-typescript [![Prettier][prettier]][prettier] #
 
 1. Clone the repo.
 2. Remove existing (`rm -rf .git`) and initialize new git repo (`git init`).
@@ -16,15 +16,15 @@
 * `yarn serve` - serve the builded project,
 
 #### Test
-* `yarn lint` - check for eslint errors
+* `yarn lint` - check for tslint errors
 
 ### Technology stack: ###
+* [Typescript](https://www.typescriptlang.org/index.html)
 * [Redux](https://redux.js.org/) and [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
 * [@Reach/router](https://reach.tech/router)
 * [Webpack](https://webpack.js.org/) with [react-hot-loader](http://gaearon.github.io/react-hot-loader/)
 * [styled-components](https://www.styled-components.com/)
-* [focus-ring](https://github.com/WICG/focus-visible) polyfill
-* [Babel](https://babeljs.io/) with @babel/polyfill, @babel/preset-env and @babel/preset-react
-* [eslint](https://eslint.org/) - [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) + [Prettier](https://prettier.io/)
+* [Babel](https://babeljs.io/) with @babel/preset-typescript and @babel/preset-react
+* [tslint](https://palantir.github.io/tslint/) + [Prettier](https://prettier.io/)
 
 [prettier]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square

@@ -1,11 +1,11 @@
-import React from "react";
 import { Router } from "@reach/router";
+import React from "react";
 import { hot } from "react-hot-loader";
 import { injectGlobal } from "styled-components";
-import Page404 from "./Page404";
 import IndexPage from "./IndexPage";
+import Page404 from "./Page404";
 
-// eslint-disable-next-line no-unused-expressions
+// tslint:disable-next-line
 injectGlobal`
   body {
     margin: 0;
@@ -14,7 +14,6 @@ injectGlobal`
   }
 `;
 
-// @ts-ignore 
 const App = () => (
   <Router>
     <IndexPage path="/" />
