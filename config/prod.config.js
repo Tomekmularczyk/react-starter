@@ -7,7 +7,7 @@ const productionConfig = merge([
   parts.setProductionMode(),
   parts.setEntries({
     client: PATHS.clientBundleEntry,
-    vendor: ["@babel/polyfill", "wicg-focus-ring"]
+    vendor: ["@babel/polyfill"]
   }),
   parts.createVendorChunk("vendor"),
   parts.setOutput(PATHS.mainOutputDirectory),

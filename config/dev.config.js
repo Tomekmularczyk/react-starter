@@ -7,7 +7,7 @@ const parts = require("./webpack.parts");
 const devConfig = merge([
   parts.setDevMode(),
   parts.setEntries({
-    client: ["@babel/polyfill", "wicg-focus-ring", PATHS.clientBundleEntry]
+    client: ["@babel/polyfill", PATHS.clientBundleEntry]
   }),
   parts.setOutput(PATHS.mainOutputDirectory),
   parts.resolveDependencies(),
