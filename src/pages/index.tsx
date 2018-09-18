@@ -14,6 +14,7 @@ injectGlobal`
   }
 `;
 
+// @ts-ignore 
 const App = () => (
   <Router>
     <IndexPage path="/" />

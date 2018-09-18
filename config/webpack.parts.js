@@ -51,7 +51,7 @@ exports.transpileJavaScript = () => ({
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(tsx?)|(js)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -175,6 +175,6 @@ exports.runWebpackBundleAnalyzer = () => ({
 exports.resolveDependencies = aliases => ({
   resolve: {
     alias: aliases,
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".ts", ".tsx"]
   }
 });
