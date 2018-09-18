@@ -1,6 +1,6 @@
 import React from "react";
+import logo from "static/react-logo.svg";
 import styled, { keyframes } from "styled-components";
-import logo from "../../static/react-logo.svg";
 
 const Container = styled.section`
   text-align: center;
@@ -27,7 +27,12 @@ const Logo = styled.img`
   height: 80px;
 `;
 
-const IndexPage = () => (
+interface IProps {
+  path?: string;
+}
+
+// @ts-ignore
+const IndexPage = (props: IProps) => (
   <Container>
     <Header>
       <Logo src={logo} alt="logo" />

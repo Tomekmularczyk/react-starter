@@ -6,7 +6,12 @@ const H3 = styled.h3`
   background-color: red;
 `;
 
-const Page404 = () => (
+interface IProps {
+  default?: boolean;
+}
+
+// @ts-ignore
+const Page404 = (props: IProps) => (
   <section>
     <H3>
       No match for
