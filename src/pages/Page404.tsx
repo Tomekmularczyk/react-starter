@@ -1,4 +1,4 @@
-import { Link, Location } from "@reach/router";
+import { Link, Location, RouteComponentProps } from "@reach/router";
 import React from "react";
 import styled from "styled-components";
 
@@ -6,12 +6,8 @@ const H3 = styled.h3`
   background-color: red;
 `;
 
-interface IProps {
-  default?: boolean;
-}
-
-// @ts-ignore
-const Page404 = (props: IProps) => (
+// @ts-ignore: Props declration for @reach/router
+const Page404 = (props: RouteComponentProps) => (
   <section>
     <H3>
       No match for
