@@ -1,3 +1,4 @@
+import { RouteComponentProps } from "@reach/router";
 import React from "react";
 import logo from "static/react-logo.svg";
 import styled, { keyframes } from "styled-components";
@@ -27,12 +28,16 @@ const Logo = styled.img`
   height: 80px;
 `;
 
-interface IProps {
-  path?: string;
-}
+/* If you need more props like 'children' you can just extend RouteComponentProps.
 
-// @ts-ignore
-const IndexPage = (props: IProps) => (
+  interface IProps extends RouteComponentProps {
+    children: JSX.Element;
+  }
+
+*/
+
+// @ts-ignore: Props declration for @reach/router
+const IndexPage = (props: RouteComponentProps) => (
   <Container>
     <Header>
       <Logo src={logo} alt="logo" />
