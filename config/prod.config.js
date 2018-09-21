@@ -6,11 +6,10 @@ const parts = require("./webpack.parts");
 const productionConfig = merge([
   parts.setProductionMode(),
   parts.setEntries({
-    client: PATHS.clientBundleEntry,
-    vendor: ["@babel/polyfill"]
+    client: ["@babel/polyfill", PATHS.clientBundleEntry],
   }),
-  parts.createVendorChunk("vendor"),
-  parts.setOutput(PATHS.mainOutputDirectory),
+  parts.createVendorChunk(["@babel/polyfill|react|react-dom"]),
+  parts.setOutput(PATHS.mainOutputDirectory, true),
   parts.cleanDirectory(PATHS.mainOutputDirectory, PATHS.root),
   parts.resolveDependencies(),
   parts.generateGitRevision(),

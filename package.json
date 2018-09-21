@@ -13,7 +13,6 @@
     "@babel/polyfill": "^7.0.0",
     "@reach/router": "^1.1.1",
     "@types/reach__router": "^1.0.1",
-    "@types/redux": "^3.6.0",
     "@types/styled-components": "^3.0.1",
     "@types/webpack-env": "^1.13.6",
     "copy-webpack-plugin": "^4.5.2",

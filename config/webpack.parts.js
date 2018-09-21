@@ -84,10 +84,9 @@ exports.loadStaticAssets = relativePath => ({
 /****************************************
  *         O  U  T  P  U  T
  ***************************************/
-exports.setOutput = pathToDirectory => {
+exports.setOutput = (pathToDirectory, isProduction) => {
   // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
-  const filename =
-    process.env.NODE_ENV === "production"
+  const filename = isProduction
       ? "[name].[chunkhash:8].bundle.js"
       : "[name].bundle.js";
   return {
@@ -103,19 +102,22 @@ exports.setOutput = pathToDirectory => {
 /************************************************
  *         O P T I M I Z A T I O N
  ************************************************/
-exports.createVendorChunk = entryName => ({
+// https://webpack.js.org/plugins/split-chunks-plugin/#split-chunks-example-3
+exports.createVendorChunk = moduleList => ({
   optimization: {
+    runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
         vendor: {
+          test: new RegExp(
+            `[\\/]node_modules[\\/](${moduleList.join("|")})[\\/]`
+          ),
           chunks: "initial",
-          name: entryName,
-          test: entryName,
+          name: "vendors",
           enforce: true
         }
       }
-    },
-    runtimeChunk: true
+    }
   }
 });
 
