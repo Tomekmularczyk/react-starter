@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack.run.js --progress --env.development",
     "build": "webpack --config config/webpack.run.js --progress --env.production",
-    "serve": "npx serve dist/",
     "type-check": "tsc",
     "lint": "tslint './src/**/*.ts*'"
   },
