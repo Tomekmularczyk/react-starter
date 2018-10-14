@@ -13,6 +13,7 @@ exports.setDevServer = () => ({
   devServer: {
     compress: true,
     hot: true,
+    open: true,
     historyApiFallback: true,
     disableHostCheck: true,
     host: "127.0.0.1"
@@ -87,8 +88,8 @@ exports.loadStaticAssets = relativePath => ({
 exports.setOutput = (pathToDirectory, isProduction) => {
   // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
   const filename = isProduction
-      ? "[name].[chunkhash:8].bundle.js"
-      : "[name].bundle.js";
+    ? "[name].[chunkhash:8].bundle.js"
+    : "[name].bundle.js";
   return {
     output: {
       filename,
