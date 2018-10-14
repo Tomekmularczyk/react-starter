@@ -1,15 +1,20 @@
 {
   "presets": [
-    "@babel/preset-typescript",
-    "@babel/preset-react"
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-typescript"
   ],
   "plugins": [
-    ["module-resolver", {
-      "alias": {
-        "static": "./static",
-        "services": "./services"
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "static": "./static",
+          "services": "./services"
+        }
       }
-    }],
+    ],
+    "@babel/plugin-proposal-class-properties",
     "react-hot-loader/babel"
   ]
 }
