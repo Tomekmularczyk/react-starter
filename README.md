@@ -1,6 +1,5 @@
 # react-starter-typescript [![Prettier][prettier]][prettier] #
 
-#### For client-only solution go to the [client-only](https://github.com/Tomekmularczyk/react-starter/tree/client-only) branch.
 #### For SSR solution fo to the [master](https://github.com/Tomekmularczyk/react-starter/tree/master) branch.
 
 ### Setup:
