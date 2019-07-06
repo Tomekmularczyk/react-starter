@@ -6,8 +6,7 @@ const H3 = styled.h3`
   background-color: red;
 `;
 
-// @ts-ignore: Props declration for @reach/router
-const Page404 = (props: RouteComponentProps) => (
+const Page404: React.FC<RouteComponentProps> = () => (
   <section>
     <H3>
       No match for

@@ -2,7 +2,7 @@ import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./rootReducer";
 
-export default function configureStore(preloadedState) {
+export default function configureStore(preloadedState?: {}) {
   const store = createStore(
     rootReducer,
     preloadedState,

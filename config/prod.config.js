@@ -12,7 +12,7 @@ const productionConfig = merge([
   }),
   parts.createVendorChunk(vendor),
   parts.setOutput(PATHS.mainOutputDirectory, true),
-  parts.cleanDirectory(PATHS.mainOutputDirectory, PATHS.root),
+  parts.cleanDirectory(),
   parts.resolveDependencies(),
   parts.generateGitRevision(),
   parts.loadStaticAssets("static/"),

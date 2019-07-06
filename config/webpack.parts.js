@@ -1,6 +1,6 @@
 /* eslint-disable spaced-comment, import/no-extraneous-dependencies */
 const webpack = require("webpack");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -125,10 +125,8 @@ exports.createVendorChunk = moduleList => ({
 /****************************************
  *         P  L  U  G  I  N  S
  ***************************************/
-exports.cleanDirectory = (directory, projectRoot) => ({
-  plugins: [
-    new CleanWebpackPlugin([directory], { root: projectRoot, verbose: true })
-  ]
+exports.cleanDirectory = () => ({
+  plugins: [new CleanWebpackPlugin({ verbose: true })]
 });
 
 exports.generateGitRevision = () => ({

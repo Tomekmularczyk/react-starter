@@ -28,16 +28,7 @@ const Logo = styled.img`
   height: 80px;
 `;
 
-/* If you need more props like 'children' you can just extend RouteComponentProps.
-
-  interface IProps extends RouteComponentProps {
-    children: JSX.Element;
-  }
-
-*/
-
-// @ts-ignore: Props declration for @reach/router
-const IndexPage = (props: RouteComponentProps) => (
+const IndexPage: React.FC<RouteComponentProps> = () => (
   <Container>
     <Header>
       <Logo src={logo} alt="logo" />
