@@ -6,7 +6,7 @@ const parts = require("./webpack.parts");
 const devConfig = merge([
   parts.setDevMode(),
   parts.setEntries({
-    client: ["@babel/polyfill", PATHS.clientBundleEntry]
+    client: PATHS.clientBundleEntry
   }),
   parts.setOutput(PATHS.mainOutputDirectory),
   parts.resolveDependencies(),
