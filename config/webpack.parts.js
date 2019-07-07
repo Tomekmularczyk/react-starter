@@ -1,4 +1,3 @@
-/* eslint-disable spaced-comment, import/no-extraneous-dependencies */
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -146,7 +145,6 @@ exports.useHTMLTemplate = pathToTemplate => ({
 exports.defineEnvironmentalVariables = variables => {
   const stringifiedValues = Object.entries(variables).reduce(
     (obj, [key, val]) => {
-      // eslint-disable-next-line no-param-reassign
       obj[key] = JSON.stringify(val);
       return obj;
     },

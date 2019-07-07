@@ -12,7 +12,7 @@ export default function configureStore(preloadedState?: {}) {
   //  redux HMR
   if (module.hot) {
     module.hot.accept("./rootReducer", () => {
-      const nextRootReducer = require("./rootReducer").default; // eslint-disable-line global-require
+      const nextRootReducer = require("./rootReducer").default;
       store.replaceReducer(nextRootReducer);
     });
   }

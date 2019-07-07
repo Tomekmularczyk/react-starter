@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const merge = require("webpack-merge");
 const PATHS = require("./paths");
 const parts = require("./webpack.parts");
