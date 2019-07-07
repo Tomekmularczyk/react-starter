@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack.run.js --progress --env.development",
     "build": "webpack --config config/webpack.run.js --progress --env.production",
-    "type-check": "tsc",
+    "typecheck": "tsc",
     "lint": "tslint './src/**/*.ts*'"
   },
   "dependencies": {

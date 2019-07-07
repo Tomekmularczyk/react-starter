@@ -9,8 +9,7 @@
       "module-resolver",
       {
         "alias": {
-          "static": "./static",
-          "services": "./services"
+          "": "./src/"
         }
       }
     ],

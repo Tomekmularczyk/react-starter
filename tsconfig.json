@@ -14,15 +14,12 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "noEmit": true,
     "pretty": true,
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016"
-    ]
+    "lib": ["dom", "es2015", "es2016"],
+    "paths": {
+      "*": ["src/*"]
+    }
   }
 }

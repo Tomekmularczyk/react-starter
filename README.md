@@ -16,6 +16,7 @@
 
 #### Test
 * `yarn lint` - check for tslint errors
+* `yarn typecheck` - check for typescript errors
 
 ### Technology stack: ###
 * [Typescript](https://www.typescriptlang.org/index.html)

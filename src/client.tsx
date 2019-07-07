@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import configureStore from "services/redux/store";
 import App from "./pages";
+import configureStore from "./store/store";
 
 const store = configureStore();
 

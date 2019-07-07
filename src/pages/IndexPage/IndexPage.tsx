@@ -1,7 +1,7 @@
 import { RouteComponentProps } from "@reach/router";
 import React from "react";
-import logo from "static/react-logo.svg";
 import styled, { keyframes } from "styled-components";
+import logo from "./react-logo.svg";
 
 const Container = styled.section`
   text-align: center;
