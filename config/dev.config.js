@@ -8,12 +8,12 @@ const devConfig = merge([
   parts.setEntries({
     client: PATHS.clientBundleEntry
   }),
-  parts.setOutput(PATHS.mainOutputDirectory),
+  parts.setOutput(PATHS.publicDirectory),
   parts.resolveDependencies(),
   parts.setDevServer(),
   parts.transpileJavaScript(),
   parts.loadStaticAssets("static/"),
-  parts.useHTMLTemplate(PATHS.htmlTemplate),
+  parts.generateDevHTML(PATHS.ejsTemplate),
   parts.setExtraPlugins([new webpack.HotModuleReplacementPlugin()])
 ]);
 

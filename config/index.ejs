@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+    <!-- styled-jsx styles -->
+    <%if (htmlWebpackPlugin.options.production) { %> <%= '\<\%\- styles \%\>' %>
+    <% } %>
+  </head>
+  <body>
+    <% if (htmlWebpackPlugin.options.production) { %>
+    <div id="app"><%= '\<\%\- html \%\>' %></div>
+    <script>
+      //--- redux initial state from server
+      <%= "window.__PRELOADED_STATE__ = " + '\<\%\- preloadedState \%\>' %>
+    </script>
+    <% } else { %>
+    <div id="app"></div>
+    <% } %>
+  </body>
+</html>

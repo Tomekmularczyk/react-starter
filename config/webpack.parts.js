@@ -4,6 +4,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const nodeExternals = require("webpack-node-externals");
 
 /****************************************
  *         D  E  V    S  E  R  V  E  R
@@ -34,6 +35,13 @@ exports.setEntries = entries => ({
 });
 
 /****************************************
+ *         E  X  T  E  R  N  A  L  S
+ ***************************************/
+exports.skipNodeModulesOnServer = () => ({
+  externals: [nodeExternals()]
+});
+
+/****************************************
  *         M O D E
  ***************************************/
 exports.setDevMode = () => ({
@@ -51,7 +59,7 @@ exports.transpileJavaScript = () => ({
   module: {
     rules: [
       {
-        test: /\.(tsx?)|(js)$/,
+        test: /\.(tsx?|jsx?)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -84,7 +92,7 @@ exports.loadStaticAssets = relativePath => ({
 /****************************************
  *         O  U  T  P  U  T
  ***************************************/
-exports.setOutput = (pathToDirectory, isProduction) => {
+exports.setOutput = (pathToDirectory, isProduction = false) => {
   // remove [chunkhash] with webpack-dev-server - https://github.com/webpack/webpack/issues/2393
   const filename = isProduction
     ? "[name].[chunkhash:8].bundle.js"
@@ -132,12 +140,26 @@ exports.generateGitRevision = () => ({
   plugins: [new GitRevisionPlugin()]
 });
 
-exports.useHTMLTemplate = pathToTemplate => ({
+exports.generateDevHTML = pathToTemplate => ({
   plugins: [
     new HTMLWebpackPlugin({
       template: pathToTemplate,
       filename: "index.html",
       inject: "body"
+    })
+  ]
+});
+
+exports.generateServerEjsTemplate = pathToTemplate => ({
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: pathToTemplate,
+      filename: "index.ejs",
+      inject: "body",
+      production: true, //  render placeholders for ssr
+      minify: {
+        removeComments: true
+      }
     })
   ]
 });
@@ -174,6 +196,17 @@ exports.runWebpackBundleAnalyzer = () => ({
 exports.resolveDependencies = aliases => ({
   resolve: {
     alias: aliases,
-    extensions: [".js", ".ts", ".tsx"]
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
+  }
+});
+
+/****************************************
+ *         T  A  R  G  E  T
+ ***************************************/
+exports.targetNode = () => ({
+  target: "node",
+  node: {
+    __filename: false,
+    __dirname: false
   }
 });

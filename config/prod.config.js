@@ -9,13 +9,13 @@ const productionConfig = merge([
   parts.setEntries({
     client: PATHS.clientBundleEntry
   }),
+  parts.setOutput(PATHS.publicDirectory, true),
   parts.createVendorChunk(vendor),
-  parts.setOutput(PATHS.mainOutputDirectory, true),
-  parts.cleanDirectory(),
+  parts.cleanDirectory(PATHS.mainOutputDirectory, PATHS.root),
   parts.resolveDependencies(),
   parts.generateGitRevision(),
   parts.loadStaticAssets("static/"),
-  parts.useHTMLTemplate(PATHS.htmlTemplate),
+  parts.generateServerEjsTemplate(PATHS.ejsTemplate),
   parts.transpileJavaScript(),
   parts.copy([{ from: "./static", to: "./static" }])
 ]);

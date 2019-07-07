@@ -4,7 +4,9 @@ const root = path.resolve(__dirname, "../");
 const PATHS = {
   root,
   clientBundleEntry: path.join(root, "src/client.tsx"),
-  htmlTemplate: path.join(root, "config/index.html"),
+  serverBundleEntry: path.join(root, "server/server.js"),
+  publicDirectory: path.join(root, "dist/public/"),
+  ejsTemplate: path.join(root, "config/index.ejs"),
   mainOutputDirectory: path.join(root, "dist/")
 };
 
