@@ -1,6 +1,6 @@
 # react-starter-typescript [![Prettier][prettier]][prettier] #
 
-#### For SSR solution fo to the [master](https://github.com/Tomekmularczyk/react-starter/tree/master) branch.
+#### For SSR solution fo to the [with-typescript-ssr](https://github.com/Tomekmularczyk/react-starter/tree/with-typescript-ssr) branch.
 
 ### Setup:
 
