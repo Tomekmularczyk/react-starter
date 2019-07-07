@@ -5,7 +5,6 @@ import { createGlobalStyle } from "styled-components";
 import IndexPage from "./IndexPage";
 import Page404 from "./Page404";
 
-// tslint:disable-next-line
 const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
