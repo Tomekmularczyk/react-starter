@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config config/webpack.run.js --progress --env.development",
-    "build:client": "webpack --config config/webpack.run.js --progress --env.production",
-    "build:server": "webpack --config config/webpack.run.js --progress --env.server",
-    "build": "npm run build:client && npm run build:server",
+    "dev": "node config/run.js -dev",
+    "build": "node config/run.js -build",
     "start": "NODE_ENV=production node dist/server.*.bundle.js",
     "debug-ssr": "node --inspect dist/server.*.bundle.js",
     "typecheck": "tsc",
