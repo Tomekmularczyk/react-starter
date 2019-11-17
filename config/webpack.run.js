@@ -1,6 +1,4 @@
-const devConfig = require("./dev.config");
-const prodConfig = require("./prod.config");
-const serverConfig = require("./server.config");
+const { devConfig, serverConfig, prodConfig } = require("./webpack.config");
 
 module.exports = env => {
   if (env.development) {
