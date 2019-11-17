@@ -1,10 +1,10 @@
 const merge = require("webpack-merge");
 const PATHS = require("./paths");
 const parts = require("./webpack.parts");
+const webpack = require("webpack");
 
 const vendor = ["react", "react-dom"];
-
-const productionConfig = merge([
+const prodConfig = merge([
   parts.setProductionMode(),
   parts.setEntries({
     client: PATHS.clientBundleEntry
@@ -20,4 +20,18 @@ const productionConfig = merge([
   parts.copy([{ from: "./static", to: "./static" }])
 ]);
 
-module.exports = productionConfig;
+const devConfig = merge([
+  parts.setDevMode(),
+  parts.setEntries({
+    client: PATHS.clientBundleEntry
+  }),
+  parts.setOutput(PATHS.mainOutputDirectory),
+  parts.resolveDependencies(),
+  parts.setDevServer(),
+  parts.transpileJavaScript(),
+  parts.loadStaticAssets("static/"),
+  parts.useHTMLTemplate(PATHS.htmlTemplate),
+  parts.setExtraPlugins([new webpack.HotModuleReplacementPlugin()])
+]);
+
+module.exports = { devConfig, prodConfig };
